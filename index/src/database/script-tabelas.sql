@@ -11,24 +11,15 @@ create table pontuacaoTotal(
 idPontuacao int,
 fkUsuario int,
 constraint pkPontCad primary key (idPontuacao, fkUsuario),
-acertosTotais int,
-errosTotais int,
-seqAcertos int,
-naoRespondido int,
-constraint FkPontCad foreign key (fkUsuario) references usuario(idUsuario)
-);
-
-create table tentativa(
-idTentativa int primary key auto_increment,
 acertosTntv1 int,
 acertosTntv2 int,
 acertosTntv3 int,
 acertosTntv4 int,
 acertosTntv5 int,
-fkPontuacao int,
-fkPontuacaoUsuario int,
-constraint fkPontTent foreign key (fkPontuacao) references pontuacaoTotal(idPontuacao),
-constraint fkPontUserTent foreign key (fkPontuacaoUsuario) references pontuacaoTotal(fkUsuario)
+errosTotais int,
+seqAcertos int,
+naoRespondido int,
+constraint FkPontCad foreign key (fkUsuario) references usuario(idUsuario)
 );
 
 create table pontuacaoAlbum(
