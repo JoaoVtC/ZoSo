@@ -3,9 +3,9 @@ use zoso;
 
 create table usuario(
 idUsuario int primary key auto_increment,
-nickname varchar(45), 
-email varchar(90),
-telefoneCel char(11));
+nickname varchar(45) not null, 
+email varchar(90) not null,
+senha varchar(45) not null);
 
 create table pontuacaoTotal(
 idPontuacao int,
