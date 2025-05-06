@@ -79,3 +79,26 @@ p{
   font-size: 12px;
   text-align: justify;  
 }
+
+.box-left{
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+  border-right: solid 2px white;
+}
+
+.box-one{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: solid 2px white;
+  padding: 10px;
+}
+
+.box-two{
+  padding: 10px;
+}
+
+span{
+  width: 40vh;
+}
