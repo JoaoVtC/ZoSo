@@ -39,14 +39,6 @@ body{
   padding: 20px;
 }
 
-.member-banner{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 180vh;
-  padding: 20px;
-}
-
 
 .banner-txt{
   display: flex;
@@ -84,7 +76,7 @@ body{
 }
 
 p{
-  font-size: 12px;
+  font-size: 15px;
   text-align: justify;  
 }
 
