@@ -120,4 +120,29 @@ span{
 .member-title{
   display: flex;
   align-self: center;
+  justify-self: center;
+}
+
+.album-container{
+  display: flex;
+  width: 185vh;
+  align-self: center;
+  justify-content: space-evenly;
+}
+
+.album{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90vh;
+  border: 2px solid white;
+  padding: 20px;
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px white solid;
+  padding-bottom: 30px;
 }
