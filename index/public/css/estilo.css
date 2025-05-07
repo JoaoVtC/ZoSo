@@ -39,6 +39,14 @@ body{
   padding: 20px;
 }
 
+.member-banner{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 180vh;
+  padding: 20px;
+}
+
 
 .banner-txt{
   display: flex;
@@ -87,6 +95,13 @@ p{
   border-right: solid 2px white;
 }
 
+
+.box-right{
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+}
+
 .box-one{
   display: flex;
   flex-direction: row;
@@ -99,6 +114,18 @@ p{
   padding: 10px;
 }
 
+.box-two-legacy{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+}
+
 span{
   width: 40vh;
+}
+
+.member-title{
+  display: flex;
+  align-self: center;
 }
