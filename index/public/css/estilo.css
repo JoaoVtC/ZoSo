@@ -87,6 +87,12 @@ p{
   border-right: solid 2px white;
 }
 
+.box-album{
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+}
+
 
 .box-right{
   display: flex;
