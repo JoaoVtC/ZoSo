@@ -30,12 +30,20 @@ body{
   margin-bottom: 80px;
 }
 
-.left-banner{
+.container{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 180vh;
   border-bottom: 2px solid white;
+  padding: 20px;
+}
+
+.container-album{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 180vh;
   padding: 20px;
 }
 
@@ -47,7 +55,7 @@ body{
   text-align: center;
 }
 
-.history-txt{
+.box-txt{
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -56,6 +64,10 @@ body{
 .txt{
   display: flex;
   flex-direction: row;
+}
+
+.invert-color{
+  filter: invert(1);
 }
 
 .left-txt{
@@ -77,10 +89,11 @@ body{
 
 p{
   font-size: 15px;
-  text-align: justify;  
+  text-align: justify; 
+  width: 40vh; 
 }
 
-.box-left{
+.container-left{
   display: flex;
   flex-direction: column;
   width: 100vh;
@@ -94,13 +107,13 @@ p{
 }
 
 
-.box-right{
+.container-right{
   display: flex;
   flex-direction: column;
   width: 100vh;
 }
 
-.box-one{
+.box-txt-top{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -108,22 +121,25 @@ p{
   padding: 10px;
 }
 
-.box-two{
-  padding: 10px;
-}
-
-.box-two-legacy{
+.box-txt-bottom{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding: 10px;
 }
 
-span{
-  width: 40vh;
+.box-banner-top{
+  padding: 10px;
+  border-bottom: solid 2px white;
 }
 
-.member-title{
+.box-banner-bottom{
+  padding: 10px;
+}
+
+
+
+.title{
   display: flex;
   align-self: center;
   justify-self: center;
@@ -151,4 +167,19 @@ span{
   justify-content: space-around;
   border-bottom: 2px white solid;
   padding-bottom: 30px;
+}
+
+.banner-members{
+  height: 230px;
+  width: 545px;
+}
+
+.members-img{
+  width: 250px;
+  height: 320px;
+}
+
+.icons-img{
+  width: 30px;
+  height: 30px;
 }
