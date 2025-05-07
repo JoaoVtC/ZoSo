@@ -17,6 +17,12 @@
   padding: 10px;
 }
 
+.button:hover{
+  color: red;
+  transform: scale(1.3);
+  transition: 200ms linear;
+}
+
 body{
   background-color: black;
   height: 100vh;
