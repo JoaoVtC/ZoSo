@@ -7,19 +7,19 @@
   color: white;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 .header{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   background-image:linear-gradient(0deg, black, #433e3e) ;
-  height: 110px;
+  height: 90px;
   padding: 10px;
-  position: sticky;
-  top:0;
-  width: 100%;
-  z-index: 1000;
-  
+
 }
 
 a{
