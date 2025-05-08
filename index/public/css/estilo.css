@@ -52,7 +52,6 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 180vh;
   border-bottom: 2px solid white;
   padding: 20px;
 }
@@ -200,4 +199,67 @@ p{
 .icons-img{
   width: 30px;
   height: 30px;
+}
+
+.slider{
+  margin: 0 auto;
+  overflow: hidden;
+  width: 200vh;
+  height: 116vh;
+}
+.slides{
+  display: flex;
+  width: 400%;
+  height: 116vh;
+}
+.slider input{
+  display: none;
+}
+
+.slide{
+  width: 25%;
+  position: relative;
+}
+
+.manual-navigation{
+  position: absolute;
+  width: 800px;
+  margin-top: -40px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  margin-left: 520px;
+}
+
+.manual-btn{
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.manual-btn:not(:last-child){
+  margin-right: 40px;
+}
+
+.manual-btn:hover{
+  background-color: red;
+  transition: 500ms;
+}
+
+#radio1:checked ~.first{
+  margin-left: 0;
+}
+
+#radio2:checked ~.first{
+  margin-left: -25%;
+}
+
+#radio3:checked ~.first{
+  margin-left: -50%;
+}
+
+#radio4:checked ~.first{
+  margin-left: -75%;
 }
