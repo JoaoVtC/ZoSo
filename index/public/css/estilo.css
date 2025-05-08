@@ -255,7 +255,7 @@ p{
 }
 
 #radio2:checked ~.first{
-  margin-left: 25%;
+  margin-left: -25%;
 }
 
 #radio3:checked ~.first{
