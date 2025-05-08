@@ -207,11 +207,13 @@ p{
   width: 200vh;
   height: 116vh;
 }
+
 .slides{
   display: flex;
   width: 400%;
   height: 116vh;
 }
+
 .slider input{
   display: none;
 }
@@ -223,8 +225,8 @@ p{
 
 .manual-navigation{
   position: absolute;
-  width: 800px;
-  margin-top: -40px;
+  width: 700px;
+  margin-top: -30px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
@@ -253,7 +255,7 @@ p{
 }
 
 #radio2:checked ~.first{
-  margin-left: -25%;
+  margin-left: 25%;
 }
 
 #radio3:checked ~.first{
