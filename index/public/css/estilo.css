@@ -54,6 +54,8 @@ body{
   justify-content: space-around;
   border-bottom: 2px solid white;
   padding: 20px;
+  width: 200vh;
+  height: 100%;
 }
 
 .container-album{
@@ -201,67 +203,46 @@ p{
   height: 30px;
 }
 
-.slider{
-  margin: 0 auto;
-  overflow: hidden;
-  width: 200vh;
-  height: 116vh;
-}
 
-.slides{
-  display: flex;
-  width: 400%;
-  height: 116vh;
-}
-
-.slider input{
-  display: none;
-}
-
-.slide{
-  width: 25%;
-  position: relative;
-}
-
-.manual-navigation{
-  position: absolute;
-  width: 700px;
-  margin-top: -30px;
-  margin-bottom: 20px;
+.header-cadastro{
   display: flex;
   flex-direction: row;
-  align-self: flex-end;
-  left: 600px;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: black;
+  height: 90px;
+  padding: 10px;
+  gap: 70px;
+  margin-right: 100px;
 }
 
-.manual-btn{
-  background-color: white;
-  border-radius: 10px;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.manual-btn:not(:last-child){
-  margin-right: 40px;
-}
-
-.manual-btn:hover{
+.box-red{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 150px;
   background-color: red;
-  transition: 500ms;
+  border-radius: 20px;
 }
 
-#radio1:checked ~.first{
-  margin-left: 0;
+.container-left-cadastro{
+  height: 100vh;
+  background-image: linear-gradient(to bottom, black, #760909);
+  width: 130vh;
+  border-right: white 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#radio2:checked ~.first{
-  margin-left: -25%;
+.container-right-cadastro{
+   height: 100vh; 
+  width: 170vh;
+
 }
 
-#radio3:checked ~.first{
-  margin-left: -50%;
-}
-
-#radio4:checked ~.first{
-  margin-left: -75%;
+.body-row-cadastro{
+  display: flex;
+  flex-direction: row;
 }
