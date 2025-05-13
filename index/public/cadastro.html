@@ -11,7 +11,7 @@
   <script src="./js/sessao.js"></script>
   <link rel="icon" href="./assets/logo.png">
   <link rel="stylesheet" href="./css/cadastro.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="icon" href="./assets/logo.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -32,9 +32,9 @@
           <input class="ipt-nick" type="text" id="iptNick" placeholder="Nickname">
           <input class="ipt-email" type="text" id="iptEmail" placeholder="email">
         </div>
-          <input  type="text" id="iptNick" placeholder="Nickname">
-          <input  type="text" id="iptEmail" placeholder="email">
-          <button><h2>Cadastrar</h2></button>
+          <input  type="text" id="iptPwd" placeholder="Senha">
+          <input  type="text" id="iptConfPwd" placeholder="Confirmar senha">
+          <button onclick="cadastrar()"><h2>Cadastrar</h2></button>
       </div>
     </div>
   </div>
@@ -45,50 +45,26 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var nickVar = iptNick.value;
+    var emailVar = iptEmail.value;
+    var pwdVar = iptPwd.value;
+    var confPwdVar = iptConfPwd.value;
 
     // Verificando se há algum campo em branco
     if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
+      nickVar == "" || emailVar == "" || pwdVar == "" || confPwdVar == "" || codigoVar == "") {
+      alert("erro")
       finalizarAguardar();
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    } 
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
+    else {
+      setInterval(sumirMensagem, 5000);
     }
 
     // Enviando o valor da nova input
@@ -100,16 +76,15 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
+        nickServer: nickVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        pwdServer: pwdVar
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
+        /*if (resposta.ok) {
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
@@ -123,7 +98,7 @@
           finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
-        }
+        }*/
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);

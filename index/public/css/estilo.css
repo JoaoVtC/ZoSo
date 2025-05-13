@@ -205,45 +205,16 @@ p{
 }
 
 
-
-
-.slider-wrapper .slider-item{
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20vh;
+.swiper{
+  overflow: hidden;
 }
 
-.slider-wrapper .slider-item:before{
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
+.swiper-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid white;
+  padding: 20px;
+  width: 200vh;
   height: 100%;
 }
-
-
-.slider-wrapper .slider-item .slider-content{
-  z-index: 20;
-  position: relative;
-  width: 100%;
-  max-width: 1400px;
-  position: relative;
-  padding: 0 20px 10px;
-  margin: 0 auto;
-}
-
-.slider-wrapper .slider-item .slider-content > *{
-  max-width: 35%;
-}
-
-.slider-container{
-  overflow: hidden;
-
-}
-
-
-
