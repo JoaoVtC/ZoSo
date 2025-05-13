@@ -13,19 +13,21 @@
   <link rel="stylesheet" href="./css/estilo.css">
   <link rel="icon" href="./assets/logo.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 </head>
 
 <body>
 
-    <div class="header" id="header">
-      <a href="#header"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
-      <h2 class="button-header"><a href="#historia">História</a></h2>
-      <h2 class="button-header"><a href="#integrante">Integrantes</a></h2>
-      <h2 class="button-header"><a href="#album">Álbuns</a></h2>
-      <h2 class="button-header"><a href="">Quiz</a></h2>
-      <h2 class="button-header"><a href="">Cadastro</a></h2>
-      <img src="assets/user.png" alt="" width="80px" height="80px">
-    </div>
+  <div class="header" id="header">
+    <a href="#header"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
+    <h2 class="button-header"><a href="#historia">História</a></h2>
+    <h2 class="button-header"><a href="#integrante">Integrantes</a></h2>
+    <h2 class="button-header"><a href="#album">Álbuns</a></h2>
+    <h2 class="button-header"><a href="">Quiz</a></h2>
+    <h2 class="button-header"><a href="">Cadastro</a></h2>
+    <img src="assets/user.png" alt="" width="80px" height="80px">
+  </div>
 
 
   <div class="body-column">
@@ -76,145 +78,324 @@
     </div>
     <div class="body-row">
 
-      <div class="banner slider" id="integrante">
+      <div class="slider-container" id="integrante">
+        <div class="slider-wrapper">
+          <div class="slider-item">
+            <div class="slider-content">
+              <div class="container">
+                <div class="container-left"> <!--column box left-->
+                  <h2 class="title">Jimmy Page</h2>
+                  <div class="box-txt-top">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo.
+                    </p>
+                    <img src="assets/plant.jpg" alt="" class="members-img">
+                  </div> <!--row-->
+                  <div class="box-banner-bottom">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--img-->
+                </div>
 
-        <div class="slides">
-          <input type="radio" name="radio-btn" id="radio1">
-          <input type="radio" name="radio-btn" id="radio2">
-          <input type="radio" name="radio-btn" id="radio3">
-          <input type="radio" name="radio-btn" id="radio4">
-
-          <div class="slide first">
-            <div class="container">
-              <div class="container-left"> <!--column box left-->
-                <h2 class="title">Robert Plant</h2>
-                <div class="box-txt-top">
-                  <p>
-                    erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                    suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                    in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                    Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum ante
-                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula mollis
-                    rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat gravida
-                    sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
-                    libero.
-                    erat. Vestibulum sagittis felis ac elementum commodo.
-                  </p>
-                  <img src="assets/plant.jpg" alt="" class="members-img">
-                </div> <!--row-->
-                <div class="box-banner-bottom">
-                  <img src="assets/images.png" alt="" class="banner-members">
-                </div> <!--img-->
+                <div class="container-right"> <!--column box left-->
+                  <h2 class="title">Legado</h2>
+                  <div class="box-banner-top">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--row-->
+                  <div class="box-txt-bottom">
+                    <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla
+                    </p>
+                  </div> <!--img-->
+                </div>
               </div>
 
-              <div class="container-right"> <!--column box left-->
-                <h2 class="title">Legado</h2>
-                <div class="box-banner-top">
-                  <img src="assets/images.png" alt="" class="banner-members">
-                </div> <!--row-->
-                <div class="box-txt-bottom">
-                 <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
-                  <p>
-                    erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                    suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                    in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                    Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum ante
-                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula mollis
-                    rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat gravida
-                    sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
-                    libero.
-                    erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                    suscipit nulla
-                  </p>
-                </div> <!--img-->
-              </div>
+
             </div>
           </div>
 
-          
-          <div class="manual-navigation">
-            <label for="radio1" class="manual-btn"></label>
-            <label for="radio2" class="manual-btn"></label>
-            <label for="radio3" class="manual-btn"></label>
-            <label for="radio4" class="manual-btn"></label>
+          <div class="slider-item">
+            <div class="slider-content">
+              <div class="container">
+                <div class="container-left"> <!--column box left-->
+                  <h2 class="title">Robert Plant</h2>
+                  <div class="box-txt-top">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo.
+                    </p>
+                    <img src="assets/plant.jpg" alt="" class="members-img">
+                  </div> <!--row-->
+                  <div class="box-banner-bottom">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--img-->
+                </div>
+
+                <div class="container-right"> <!--column box left-->
+                  <h2 class="title">Legado</h2>
+                  <div class="box-banner-top">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--row-->
+                  <div class="box-txt-bottom">
+                    <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla
+                    </p>
+                  </div> <!--img-->
+                </div>
+              </div>
+
+
+            </div>
           </div>
+
+          <div class="slider-item">
+            <div class="slider-content">
+              <div class="container">
+                <div class="container-left"> <!--column box left-->
+                  <h2 class="title">John Paul Jones</h2>
+                  <div class="box-txt-top">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo.
+                    </p>
+                    <img src="assets/plant.jpg" alt="" class="members-img">
+                  </div> <!--row-->
+                  <div class="box-banner-bottom">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--img-->
+                </div>
+
+                <div class="container-right"> <!--column box left-->
+                  <h2 class="title">Legado</h2>
+                  <div class="box-banner-top">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--row-->
+                  <div class="box-txt-bottom">
+                    <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla
+                    </p>
+                  </div> <!--img-->
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-content">
+              <div class="container">
+                <div class="container-left"> <!--column box left-->
+                  <h2 class="title">John Bonham</h2>
+                  <div class="box-txt-top">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo.
+                    </p>
+                    <img src="assets/plant.jpg" alt="" class="members-img">
+                  </div> <!--row-->
+                  <div class="box-banner-bottom">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--img-->
+                </div>
+
+                <div class="container-right"> <!--column box left-->
+                  <h2 class="title">Legado</h2>
+                  <div class="box-banner-top">
+                    <img src="assets/images.png" alt="" class="banner-members">
+                  </div> <!--row-->
+                  <div class="box-txt-bottom">
+                    <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                      ante
+                      ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                      mollis
+                      rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                      gravida
+                      sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                      libero.
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla
+                    </p>
+                  </div> <!--img-->
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="body-row">
+
+    <div class="banner" id="album">
+      <div class="container-album">
+        <div class="box-album"> <!--column box left-->
+          <div class="album-container">
+            <div class="album one">
+              <h2 class="title">Led Zeppelin I</h2>
+              <img src="assets/led_I.jpg" alt="" width="250px" height="250px">
+              <div class="links">
+                <img src="assets/spotify.svg" alt="" class="icons-img">
+                <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                <img src="assets/apple.png" alt="" class="icons-img">
+                <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+              </div>
+              <p>
+                erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
+                in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                Nam non mattis mauris, at congue magna.
+              </p>
+            </div>
+
+            <div class="album two">
+              <h2 class="title">Led Zeppelin II</h2>
+              <img src="assets/led_2.jpg" alt="" width="250px" height="250px">
+              <div class="links">
+                <img src="assets/spotify.svg" alt="" class="icons-img">
+                <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                <img src="assets/apple.png" alt="" class="icons-img">
+                <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+              </div>
+              <p>
+                erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
+                in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                Nam non mattis mauris, at congue magna.
+              </p>
+
+            </div>
+
+            <div class="album tree">
+              <h2 class="title">Led Zeppelin III</h2>
+              <img src="assets/led_3.jpg" alt="" width="250px" height="250px">
+              <div class="links">
+                <img src="assets/spotify.svg" alt="" class="icons-img">
+                <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                <img src="assets/apple.png" alt="" class="icons-img">
+                <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+              </div>
+              <p>
+                erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
+                in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                Nam non mattis mauris, at congue magna.
+              </p>
+            </div>
+
+
+
+          </div> <!--row-->
+
+
         </div>
       </div>
 
     </div>
 
-    <div class="body-row">
-
-      <div class="banner" id="album">
-        <div class="container-album">
-          <div class="box-album"> <!--column box left-->
-            <div class="album-container">
-              <div class="album one">
-                <h2 class="title">Led Zeppelin I</h2>
-                <img src="assets/led_I.jpg" alt="" width="250px" height="250px">
-                <div class="links">
-                  <img src="assets/spotify.svg" alt="" class="icons-img">
-                  <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
-                  <img src="assets/apple.png" alt="" class="icons-img">
-                  <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
-
-                </div>
-                <p>
-                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                  Nam non mattis mauris, at congue magna.
-                </p>
-              </div>
-
-              <div class="album two">
-                <h2 class="title">Led Zeppelin II</h2>
-                <img src="assets/led_2.jpg" alt="" width="250px" height="250px">
-                <div class="links">
-                  <img src="assets/spotify.svg" alt="" class="icons-img">
-                  <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
-                  <img src="assets/apple.png" alt="" class="icons-img">
-                  <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
-
-                </div>
-                <p>
-                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                  Nam non mattis mauris, at congue magna.
-                </p>
-
-              </div>
-
-              <div class="album tree">
-                <h2 class="title">Led Zeppelin III</h2>
-                <img src="assets/led_3.jpg" alt="" width="250px" height="250px">
-                <div class="links">
-                  <img src="assets/spotify.svg" alt="" class="icons-img">
-                  <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
-                  <img src="assets/apple.png" alt="" class="icons-img">
-                  <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
-
-                </div>
-                <p>
-                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                  Nam non mattis mauris, at congue magna.
-                </p>
-              </div>
-
-
-
-            </div> <!--row-->
-
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
+  </div>
   </div>
 
   <div class="footer">
@@ -223,3 +404,10 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper(".slider-container", {
+    effect: "fade",
+    speed: 1300
+  })
+</script>

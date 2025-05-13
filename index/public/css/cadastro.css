@@ -1,0 +1,111 @@
+
+
+.header-cadastro{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: black;
+  height: 90px;
+  padding: 10px;
+  gap: 70px;
+  margin-right: 100px;
+}
+*{
+margin: 0;
+  padding: 0;
+  font-family: 'Zeppelin 2', sans-serif;
+  color: white;
+}
+
+.invert-color{
+  filter: invert(1);
+}
+body{
+    background-color: black;
+    height: 100vh;
+}
+.box-red{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 150px;
+  background-color: red;
+  border-radius: 20px;
+}
+
+.container-left-cadastro{
+  height: 100vh;
+  background-image: linear-gradient(to bottom, black, #760909);
+  width: 160vh;
+  border-right: white 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-right-cadastro{
+  height: 100vh; 
+  width: 170vh;
+}
+
+.body-row-cadastro{
+  display: flex;
+  flex-direction: row;
+}
+
+.body-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 75vh;
+}
+
+.input-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80vh;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+  background-color: black;
+  border: white 1px solid;
+  height: 35px;
+  width: 75vh;
+  padding: 5px;
+}
+
+.ipt-nick{
+    width: 160px;
+}
+
+.ipt-email{
+    width: 260px;
+}
+
+button{
+    background-color: red;
+    width: 150px;
+    height: 45px;
+    border: inherit;
+    border-radius: 20px;
+}
