@@ -228,14 +228,11 @@ p{
 }
 
 .slideshow-container {
-  max-width: 1000px;
   position: relative;
   margin: auto;
-  
 }
 
 /* Hide the images by default */
-
 
 
 .botao-slider{
@@ -245,6 +242,8 @@ p{
   width: 100%;
   margin-left: 15px;
 }
+
+
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -255,6 +254,8 @@ p{
   transition: 0.6s ease;
   user-select: none;
 }
+
+
 
 .prev{
   margin-bottom: 10px;
