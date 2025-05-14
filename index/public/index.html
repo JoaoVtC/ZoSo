@@ -79,7 +79,13 @@
     </div>
     <div class="body-row">
       <div class="slideShow-container">
-        <div class="mySlides fade">
+        <div class="botao-slider">
+          <a class="prev" onclick="plusSlidesIntegrante(-1)">&#10094;</a>
+          <h1>Escolha o integrante</h1>
+          <a class="next" onclick="plusSlidesIntegrante(1)">&#10095;</a>
+        </div>
+
+        <div class="mySlides-integrante fade">
 
           <div class="container">
             <div class="container-left"> <!--column box left-->
@@ -106,7 +112,7 @@
                 <img src="assets/images.png" alt="" class="banner-members">
               </div> <!--img-->
             </div>
-    
+
             <div class="container-right"> <!--column box left-->
               <h2 class="title">Legado</h2>
               <div class="box-banner-top">
@@ -133,14 +139,14 @@
               </div> <!--img-->
             </div>
           </div>
-  
+
         </div>
 
-        <div class="mySlides fade">
+        <div class="mySlides-integrante fade">
 
           <div class="container">
             <div class="container-left"> <!--column box left-->
-              <h2 class="title">Jimmy Page</h2>
+              <h2 class="title">Robert Plant</h2>
               <div class="box-txt-top">
                 <p>
                   erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
@@ -163,7 +169,7 @@
                 <img src="assets/images.png" alt="" class="banner-members">
               </div> <!--img-->
             </div>
-    
+
             <div class="container-right"> <!--column box left-->
               <h2 class="title">Legado</h2>
               <div class="box-banner-top">
@@ -190,99 +196,343 @@
               </div> <!--img-->
             </div>
           </div>
-  
+
         </div>
-        
+
+        <div class="mySlides-integrante fade">
+
+          <div class="container">
+            <div class="container-left"> <!--column box left-->
+              <h2 class="title">John Paul Jones</h2>
+              <div class="box-txt-top">
+                <p>
+                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                  imperdiet
+                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                  Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                  ante
+                  ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                  mollis
+                  rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                  gravida
+                  sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                  libero.
+                  erat. Vestibulum sagittis felis ac elementum commodo.
+                </p>
+                <img src="assets/plant.jpg" alt="" class="members-img">
+              </div> <!--row-->
+              <div class="box-banner-bottom">
+                <img src="assets/images.png" alt="" class="banner-members">
+              </div> <!--img-->
+            </div>
+
+            <div class="container-right"> <!--column box left-->
+              <h2 class="title">Legado</h2>
+              <div class="box-banner-top">
+                <img src="assets/images.png" alt="" class="banner-members">
+              </div> <!--row-->
+              <div class="box-txt-bottom">
+                <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
+                <p>
+                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                  imperdiet
+                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                  Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                  ante
+                  ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                  mollis
+                  rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                  gravida
+                  sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                  libero.
+                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                  suscipit nulla
+                </p>
+              </div> <!--img-->
+            </div>
+          </div>
+
         </div>
-        
 
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="mySlides-integrante fade">
+
+          <div class="container">
+            <div class="container-left"> <!--column box left-->
+              <h2 class="title">John Bonham</h2>
+              <div class="box-txt-top">
+                <p>
+                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                  imperdiet
+                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                  Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                  ante
+                  ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                  mollis
+                  rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                  gravida
+                  sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                  libero.
+                  erat. Vestibulum sagittis felis ac elementum commodo.
+                </p>
+                <img src="assets/plant.jpg" alt="" class="members-img">
+              </div> <!--row-->
+              <div class="box-banner-bottom">
+                <img src="assets/images.png" alt="" class="banner-members">
+              </div> <!--img-->
+            </div>
+
+            <div class="container-right"> <!--column box left-->
+              <h2 class="title">Legado</h2>
+              <div class="box-banner-top">
+                <img src="assets/images.png" alt="" class="banner-members">
+              </div> <!--row-->
+              <div class="box-txt-bottom">
+                <img src="assets/plantSymbol.svg" alt="" class="members-img invert-color">
+                <p>
+                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                  suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                  imperdiet
+                  in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                  Nam non mattis mauris, at congue magna. Sed sagittis felis et vestibulum vestibulum. Vestibulum
+                  ante
+                  ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut ac lorem a ligula
+                  mollis
+                  rutrum nec vel diam. Nullam quis risus non tellus vulputate tincidunt. In non massa eu erat
+                  gravida
+                  sodales eu quis turpis. Proin non felis ut enim malesuada sollicitudin. Quisque quis ultrices
+                  libero.
+                  erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                  suscipit nulla
+                </p>
+              </div> <!--img-->
+            </div>
+          </div>
+
+        </div>
 
 
-
-
+      </div>
     </div>
-  </div>
 
 
-  <div class="body-row">
+    <div class="body-row">
+      <div class="slideShow-container">
+        <div class="banner" id="album">
+          <div class="botao-slider">
+            <a class="prev" onclick="plusSlidesAlbum(-1)">&#10094;</a>
+            <h1>Escolha o álbum</h1>
+            <a class="next" onclick="plusSlidesAlbum(1)">&#10095;</a>
+          </div>
 
-    <div class="banner" id="album">
-      <div class="container-album">
-        <div class="box-album"> <!--column box left-->
-          <div class="album-container">
-            <div class="album one">
-              <h2 class="title">Led Zeppelin I</h2>
-              <img src="assets/led_I.jpg" alt="" width="250px" height="250px">
-              <div class="links">
-                <img src="assets/spotify.svg" alt="" class="icons-img">
-                <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
-                <img src="assets/apple.png" alt="" class="icons-img">
-                <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+
+          <div class="mySlides-album">
+            <div class="container-album">
+              <div class="box-album"> <!--column box left-->
+                <div class="album-container">
+                  <div class="album one">
+                    <h2 class="title">Led Zeppelin I</h2>
+                    <img src="assets/led_I.jpg" alt="" width="250px" height="250px">
+                    <div class="links">
+                      <img src="assets/spotify.svg" alt="" class="icons-img">
+                      <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                      <img src="assets/apple.png" alt="" class="icons-img">
+                      <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+                    </div>
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna.
+                    </p>
+                  </div>
+
+                  <div class="album two">
+                    <h2 class="title">Led Zeppelin II</h2>
+                    <img src="assets/led_2.jpg" alt="" width="250px" height="250px">
+                    <div class="links">
+                      <img src="assets/spotify.svg" alt="" class="icons-img">
+                      <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                      <img src="assets/apple.png" alt="" class="icons-img">
+                      <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+                    </div>
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna.
+                    </p>
+
+                  </div>
+
+                  <div class="album tree">
+                    <h2 class="title">Led Zeppelin III</h2>
+                    <img src="assets/led_3.jpg" alt="" width="250px" height="250px">
+                    <div class="links">
+                      <img src="assets/spotify.svg" alt="" class="icons-img">
+                      <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                      <img src="assets/apple.png" alt="" class="icons-img">
+                      <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+                    </div>
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna.
+                    </p>
+                  </div>
+
+                </div> <!--row-->
+
 
               </div>
-              <p>
-                erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                Nam non mattis mauris, at congue magna.
-              </p>
             </div>
+          </div>
 
-            <div class="album two">
-              <h2 class="title">Led Zeppelin II</h2>
-              <img src="assets/led_2.jpg" alt="" width="250px" height="250px">
-              <div class="links">
-                <img src="assets/spotify.svg" alt="" class="icons-img">
-                <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
-                <img src="assets/apple.png" alt="" class="icons-img">
-                <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+          <div class="mySlides-album">
+            <div class="container-album">
+              <div class="box-album"> <!--column box left-->
+                <div class="album-container">
+                  <div class="album one">
+                    <h2 class="title">Led Zeppelin I</h2>
+                    <img src="assets/led_I.jpg" alt="" width="250px" height="250px">
+                    <div class="links">
+                      <img src="assets/spotify.svg" alt="" class="icons-img">
+                      <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                      <img src="assets/apple.png" alt="" class="icons-img">
+                      <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+                    </div>
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna.
+                    </p>
+                  </div>
+
+                  <div class="album two">
+                    <h2 class="title">Led Zeppelin II</h2>
+                    <img src="assets/led_2.jpg" alt="" width="250px" height="250px">
+                    <div class="links">
+                      <img src="assets/spotify.svg" alt="" class="icons-img">
+                      <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                      <img src="assets/apple.png" alt="" class="icons-img">
+                      <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+                    </div>
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna.
+                    </p>
+
+                  </div>
+
+                  <div class="album tree">
+                    <h2 class="title">Led Zeppelin III</h2>
+                    <img src="assets/led_3.jpg" alt="" width="250px" height="250px">
+                    <div class="links">
+                      <img src="assets/spotify.svg" alt="" class="icons-img">
+                      <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
+                      <img src="assets/apple.png" alt="" class="icons-img">
+                      <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
+
+                    </div>
+                    <p>
+                      erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
+                      suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis
+                      imperdiet
+                      in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
+                      Nam non mattis mauris, at congue magna.
+                    </p>
+                  </div>
+
+                </div> <!--row-->
+
 
               </div>
-              <p>
-                erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                Nam non mattis mauris, at congue magna.
-              </p>
-
             </div>
-
-            <div class="album tree">
-              <h2 class="title">Led Zeppelin III</h2>
-              <img src="assets/led_3.jpg" alt="" width="250px" height="250px">
-              <div class="links">
-                <img src="assets/spotify.svg" alt="" class="icons-img">
-                <img src="assets/youtube-music-icon.png" alt="" class="icons-img">
-                <img src="assets/apple.png" alt="" class="icons-img">
-                <img src="assets/carrinho-de-compras.png" alt="" class="icons-img invert-color">
-
-              </div>
-              <p>
-                erat. Vestibulum sagittis felis ac elementum commodo. Proin sollicitudin congue fermentum. Nam
-                suscipit nulla nibh, in congue leo varius sit amet. Morbi in elit fringilla nunc facilisis imperdiet
-                in sed elit. Integer blandit porta lacinia. Donec convallis interdum faucibus.
-                Nam non mattis mauris, at congue magna.
-              </p>
-            </div>
-
-
-
-          </div> <!--row-->
+          </div>
 
 
         </div>
       </div>
 
-    </div>
+      <div class="footer">
 
-  </div>
-  </div>
-
-  <div class="footer">
-
-  </div>
+      </div>
 </body>
 
 </html>
+<script>
+  let slideIndexIntegrante = 1;
+  let slideIndexAlbum = 1;
+
+  showSlidesIntegrante(slideIndexIntegrante);
+  showSlidesAlbum(slideIndexAlbum);
+
+  // Next/previous controls
+  function plusSlidesIntegrante(n) {
+    showSlidesIntegrante(slideIndexIntegrante += n);
+  }
+
+  // Thumbnail image controls
+  function currentSlideIntegrante(n) {
+    showSlidesIntegrante(slideIndexIntegrante = n);
+  }
+
+  function showSlidesIntegrante(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides-integrante");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndexIntegrante = 1 }
+    if (n < 1) { slideIndexIntegrante = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndexIntegrante - 1].style.display = "block";
+    dots[slideIndexIntegrante - 1].className += " active";
+  }
+
+  // Next/previous controls
+  function plusSlidesAlbum(n) {
+    showSlidesAlbum(slideIndexAlbum += n);
+  }
+
+  // Thumbnail image controls
+  function currentSlideAlbum(n) {
+    showSlidesAlbum(slideIndexAlbum = n);
+  }
+
+  function showSlidesAlbum(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides-album");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndexAlbum = 1 }
+    if (n < 1) { slideIndexAlbum = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndexAlbum - 1].style.display = "block";
+    dots[slideIndexAlbum - 1].className += " active";
+  }
+</script>
