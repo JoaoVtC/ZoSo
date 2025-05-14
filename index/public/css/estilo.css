@@ -206,14 +206,12 @@ p{
 
 
 .swiper{
-  overflow: hidden;
 }
 
 .swiper-wrapper{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border-bottom: 2px solid white;
   padding: 20px;
   width: 200vh;
   height: 100%;
