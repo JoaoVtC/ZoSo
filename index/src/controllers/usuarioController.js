@@ -3,15 +3,15 @@ var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var pwd = req.body.pwdServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+    } else if (pwd == undefined) {
+        res.status(400).send("Sua pwd está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(email, pwd)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -27,7 +27,7 @@ function autenticar(req, res) {
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
+                                        pwd: resultadoAutenticar[0].pwd,
                                         aquarios: resultadoAquarios
                                     });
                                 } else {
@@ -35,9 +35,9 @@ function autenticar(req, res) {
                                 }
                             })
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("Email e/ou pwd inválido(s)");
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.status(403).send("Mais de um usuário com o mesmo login e pwd!");
                     }
                 }
             ).catch(
@@ -62,11 +62,10 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nick está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
-    } else {
+    } else if (pwd == undefined) {
+        res.status(400).send("Sua pwd está undefined!");
+    } 
+    else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nick, email, pwd)
