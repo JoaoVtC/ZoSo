@@ -37,9 +37,8 @@ body{
 
 .container-left-cadastro{
   height: 100vh;
-  background-image: linear-gradient(to bottom, black, #760909);
+  background-image: linear-gradient(to left, black, #760909);
   width: 160vh;
-  border-right: white 2px solid;
   display: flex;
   align-items: center;
   justify-content: center;
