@@ -4,7 +4,7 @@ use zoso;
 create table usuario(
 idUsuario int primary key auto_increment,
 nickname varchar(45) not null, 
-email varchar(90) not null,
+email varchar(90) not null unique,
 senha varchar(45) not null);
 
 create table pontuacaoTotal(

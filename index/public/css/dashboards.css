@@ -426,3 +426,8 @@ canvas {
   margin-bottom: 100px;
   cursor: pointer;
 }
+
+h2:hover{
+   transform: scale(1.8);
+  transition: 250ms linear;
+}

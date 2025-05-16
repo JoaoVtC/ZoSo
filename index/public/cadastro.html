@@ -35,6 +35,7 @@
           <input  type="text" id="iptPwd" placeholder="Senha">
           <input  type="text" id="iptConfPwd" placeholder="Confirmar senha">
           <button onclick="cadastrar()"><h2>Cadastrar</h2></button>
+          <div id="divTxt"></div>
       </div>
     </div>
   </div>
@@ -44,6 +45,27 @@
 </html>
 
 <script>
+   function verificaSenha(str) {
+        var padrao = new RegExp(
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
+        );
+
+        if (!str || str.length === 0) {
+          divTxt.innerHTML = "Preencha a senha"
+          return;
+        }
+
+        // Print Yes If the string matches
+        // with the Regex
+        if (padrao.test(str)) {
+          divTxt.innerHTML = "Senha aprovada"
+           
+        } else {
+          divTxt.innerHTML = "Atenda ao padrão requisitado"
+          
+        }
+        return;
+      }
 
   function cadastrar() {
     // aguardar();
@@ -74,13 +96,12 @@
     else if(confPwdVar != pwdVar){
       alert("erro")
     }
-    else if(!/\d/.test(pwdVar) || !/\a-z/.test(pwdVar) 
-    || !/\A-Z/.test(pwdVar) || specialChars.test(pwdVar)){
-      alert("erro")  
+    else if(verificaSenha(pwdVar)){
+      alert("senha incorreta")  
     }
-    /*else {
+    else {
       setInterval(sumirMensagem, 5000);
-    }*/
+    
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -117,7 +138,8 @@
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-      });
+      })
+    };
 
     return false;
   }
