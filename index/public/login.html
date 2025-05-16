@@ -42,15 +42,13 @@
 
 
     function entrar() {
-        aguardar();
-        var emailVar = emailInput.value;
-        var pwdVar = pwdInput.value;
+        var emailVar = iptEmail.value;
+        var pwdVar = iptPwd.value;
 
         if (emailVar == "" || pwdVar == "") {
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -78,18 +76,16 @@
                     sessionStorage.NOME_USUARIO = json.nickname;
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./quiz.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
-
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
@@ -100,8 +96,5 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
 
 </script>
