@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>Zoso | Login</title>
 
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/cadastro.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="icon" href="./assets/logo.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -28,9 +28,9 @@
       </div>
       <div class="form">
         <h1>Bem vindo de volta</h1>
-          <input  type="text" id="iptNick" placeholder="Email">
-          <input  type="text" id="iptEmail" placeholder="Senha">
-          <button><h2>Entrar</h2></button>
+          <input  type="text" id="iptEmail" placeholder="Email">
+          <input  type="text" id="iptPwd" placeholder="Senha">
+          <button onclick="entrar()"><h2>Entrar</h2></button>
       </div>
     </div>
   </div>
@@ -43,14 +43,10 @@
 
     function entrar() {
         aguardar();
+        var emailVar = emailInput.value;
+        var pwdVar = pwdInput.value;
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+        if (emailVar == "" || pwdVar == "") {
             return false;
         }
         else {
@@ -58,7 +54,7 @@
         }
 
         console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+        console.log("FORM SENHA: ", pwdVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -67,7 +63,7 @@
             },
             body: JSON.stringify({
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                pwdServer: pwdVar
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -79,10 +75,8 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
+                    sessionStorage.NOME_USUARIO = json.nickname;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading

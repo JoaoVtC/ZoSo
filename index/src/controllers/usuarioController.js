@@ -27,8 +27,7 @@ function autenticar(req, res) {
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
                                         nick: resultadoAutenticar[0].nick,
-                                        pwd: resultadoAutenticar[0].pwd,
-                                        aquarios: resultadoAquarios
+                                        pwd: resultadoAutenticar[0].pwd
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
