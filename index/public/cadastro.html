@@ -54,6 +54,7 @@
     var emailVar = iptEmail.value;
     var pwdVar = iptPwd.value;
     var confPwdVar = iptConfPwd.value;
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     // Verificando se há algum campo em branco
     if (
@@ -61,7 +62,22 @@
       alert("erro")
       return false;
     } 
+    if(!emailVar.includes('@gmail.com') && !emailVar.includes("@outlook.com") && 
+    !emailVar.includes("@hotmail.com") ){
+      alert("erro")
+    }
 
+    else if(emailVar.startsWith('@gmail.com') || emailVar.startsWith("@outlook.com") || 
+    emailVar.startsWith("@hotmail.com") ){
+      alert("erro")
+    }
+    else if(confPwdVar != pwdVar){
+      alert("erro")
+    }
+    else if(!/\d/.test(pwdVar) || !/\a-z/.test(pwdVar) 
+    || !/\A-Z/.test(pwdVar) || specialChars.test(pwdVar)){
+      alert("erro")  
+    }
     /*else {
       setInterval(sumirMensagem, 5000);
     }*/
