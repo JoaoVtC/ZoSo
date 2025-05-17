@@ -63,7 +63,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 180vh;
+  width: 220vh;
   padding: 20px;
 }
 
@@ -167,16 +167,17 @@ p{
 
 .album-container{
   display: flex;
-  width: 185vh;
+  width: 203vh;
   align-self: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .album{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 90vh;
+  height: 110vh;
+  width: 45vh;
   border: 2px solid white;
   padding: 20px;
 }
@@ -204,8 +205,17 @@ p{
   height: 30px;
 }
 
+.icons-img:hover{
+  transform: scale(1.3);
+  transition: 250ms linear;
+}
 
-.swiper{
+.album-img{
+  width: 275px;
+  height: 275px;
+}
+.album-txt{
+  width: 45vh;
 }
 
 .swiper-wrapper{
