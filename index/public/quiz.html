@@ -51,13 +51,55 @@
   </div>
   <div class="container-bottom">
      <input type="range" value="0" id="progress">
-    <audio controls>
+    <audio controls id="song">
         <source src="">
     </audio>
-    <div class="play-box">
-        <img src="assets/play-solid.svg" alt="" width="30px" height="55px">
+    <div class="play-box" onclick="play()">
+        <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
     </div>
     
   </div>
 </body>
+<script>
+    var vtMusicas = [];
+    var resposta = false;
+    var tentativas = 0;
+    var progress = document.getElementById("progress")
+    var song = document.getElementById("song")
+    var cntrlIcon = document.getElementById("cntrlIcon")
+
+    song.onloadedmetadata = function(){
+        progress.max = song.duration
+        progress.value = song.currentTime
+    }
+
+    function embaralhar(){
+        if(cntrlIcon.src == "assets/play-solid.svg"){
+            cntrlIcon.src == "assets/pause-solid.svg"
+            song.pause()
+        }
+        else{
+             cntrlIcon.src == "assets/play-solid.svg"
+             song.play()
+        }
+    }
+
+    if(song.play()){
+        setInterval(()=>{
+            progress.value = song.currentTime
+        }, 500)
+    }
+
+    progress.onchange = function(){
+        song.play()
+        song.currentTime = progress.value
+    }
+
+    function advinhar(){
+    }
+
+    function pularSegundos(){
+
+    }
+</script>
 </html>

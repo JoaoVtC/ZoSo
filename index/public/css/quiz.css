@@ -50,7 +50,7 @@ a:hover{
 .container-middle{
     display: flex;
     flex-direction: row;
-    width: 235vh;
+    width: 220vh;
     height: 60vh;
     margin-bottom: 20px;
     justify-content: space-around;
@@ -61,7 +61,7 @@ a:hover{
     display: flex;
     flex-direction: column;
     height: 12.5vh;
-    width: 235vh;
+    width: 220vh;
     align-items: center;
     gap: 30px;
 }
@@ -152,7 +152,7 @@ button{
 #progress {
   -moz-appearance: none;
   appearance: none;
-  width: 90%;
+  width: 80%;
   height: 4px;
 }
 
