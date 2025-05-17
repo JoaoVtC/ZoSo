@@ -51,8 +51,7 @@ a:hover{
     display: flex;
     flex-direction: row;
     width: 235vh;
-    height: 65vh;
-    border: 2px solid white;
+    height: 60vh;
     margin-bottom: 20px;
     justify-content: space-around;
     align-items: center;
@@ -63,15 +62,15 @@ a:hover{
     flex-direction: column;
     height: 12.5vh;
     width: 235vh;
-    border: 2px white solid;
+    align-items: center;
+    gap: 30px;
 }
 
 .songs-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     height: 45vh;
     width: 50vh;
-    border: 2px solid white;
     align-items: center;
     margin-top: -50px;
 }
@@ -90,7 +89,6 @@ a:hover{
     align-items: center;
     height: 45vh;
     width: 50vh;
-    border: 2px solid white;
     margin-top: 50px;
 }
 
@@ -115,7 +113,6 @@ input{
   border: white 1px solid;
   height: 25px;
   width: 60vh;
-  padding: 5px;
 }
 .buttons-box{
     display: flex;
@@ -147,4 +144,45 @@ button{
     height: 10px;
     border: 2px white solid;
     border-radius: 100px;
+}
+
+
+
+/* Estilo base */
+#progress {
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 4px;
+}
+
+
+
+/* Firefox - Trilha */
+#progress::-moz-range-track {
+  height: 30px;
+  background: black;
+  border: 2px white solid;
+}
+
+/* Firefox - Thumb */
+#progress::-moz-range-thumb {
+  width: 100px;
+  height: 30px;
+  background: red;
+  border: none;
+  border-radius: 0;
+  clip-path: circle(66% at center);
+}
+
+.play-box{
+    border: 2px solid white;
+    border-radius: 200px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+audio{
+    display: none;
 }
