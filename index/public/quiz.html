@@ -72,6 +72,8 @@
     var song = document.getElementById("song")
     var cntrlIcon = document.getElementById("cntrlIcon")
     var musicaAtual = 0;
+    var idUsuario = sessionStorage.ID_USUARIO
+    console.log(idUsuario)
 
     song.onloadedmetadata = function(){
         progress.max = song.duration
@@ -143,12 +145,12 @@
         tntv3Server:vtTentativas[2],
         tntv4Server: vtTentativas[3],
         tntv5Server: vtTentativas[4],
-        naoRespondidosServer: naoRespondidosVar,
+        idServer: idUsuario
+        /*naoRespondidosServer: naoRespondidosVar,
         seqAcertosServer: seqAcertosVar,
-        errosTotaisServer: ErrosTotaisVar
+        errosTotaisServer: ErrosTotaisVar*/
       }),
-    })
-    }
+    })}
 
     function pularSegundos(){
         listened = false;

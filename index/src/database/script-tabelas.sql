@@ -8,7 +8,7 @@ email varchar(90) not null unique,
 senha varchar(45) not null);
 
 create table pontuacaoTotal(
-idPontuacao int,
+idPontuacao int auto_increment,
 fkUsuario int,
 constraint pkPontCad primary key (idPontuacao, fkUsuario),
 acertosTntv1 int,
@@ -29,9 +29,9 @@ albumMaisAcertado varchar(45),
 albumMaisErrado varchar(45),
 acertosAlbumMaisAcertado int,
 errosAlbumMaisErrado int,
-constraint pkPontAlbum primary key (fkPontuacao, fkAlbum),
+constraint pkPontAlbum primary key (fkPontuacao, fkPontuacaoUsuario),
 constraint constPontAlbum foreign key (fkPontuacao) references pontuacaoTotal(idPontuacao),
-constraint constUserPont foreign key (fkPontuacaoUsuario) references pontuacaoTotal(fkUsuario),
+constraint constUserPont foreign key (fkPontuacaoUsuario) references pontuacaoTotal(fkUsuario)
 );
 
 
