@@ -34,6 +34,5 @@ function pontuacao(req, res) {
 }
 
 module.exports = {
-    autenticar,
-    cadastrar
+    pontuacao
 }

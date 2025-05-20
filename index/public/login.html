@@ -30,7 +30,7 @@
         <h1>Bem vindo de volta</h1>
           <input  type="text" id="iptEmail" placeholder="Email">
           <input  type="text" id="iptPwd" placeholder="Senha">
-          <button onclick="entrar()"><h2>Entrar</h2></button>
+          <button onclick="entrar()"><h2>Entrar</h2></button>x
       </div>
     </div>
   </div>
@@ -63,7 +63,9 @@
                 emailServer: emailVar,
                 pwdServer: pwdVar
             })
-        }).then(function (resposta) {
+        })
+
+        .then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
@@ -75,11 +77,9 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nickname;
                     sessionStorage.ID_USUARIO = json.idUsuario;
-                    setTimeout(function () {
-                        window.location = "./quiz.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    sessionStorage.SENHA_USUARIO = json.senha;
                 });
+                 window.location.href = "quiz.html"
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
@@ -94,7 +94,7 @@
         })
 
         return false;
+        console.log(resposta)
     }
-
 
 </script>
