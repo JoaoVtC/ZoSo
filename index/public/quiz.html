@@ -20,7 +20,7 @@
   <div class="container-middle">
     <div class="songs-container">
         <span class="box-red">
-            <h2>Músicas</h2>
+            <h2>Como jogar?</h2>
         </span>
     </div>
 
@@ -40,20 +40,18 @@
         <input type="text" placeholder="digíte aqui..." id="iptResposta">
         <div class="buttons-box">
             <button onclick="pularSegundos()" style="background-color: black; border: 2px white solid;">Pular</button>
-            <button onclick="advinhar()" style="background-color: red; border: inherit;">Confirmar</button>
+            <button onclick="advinhar()" style="background-color: black; border: 2px white solid;">Confirmar</button>
+            <button onclick="finalizar()"  style="background-color: red; border: inherit;">Finalizar tentativa</button>
         </div>
     </div>
 
     <div class="howTo-container">
-        <span class="box-red">
-            <h2>Como jogar?</h2>
-        </span>
     </div>
   </div>
   <div class="container-bottom">
      <input type="range" value="0" id="progress">
     <audio controls id="song">
-        <source src="assets/audios/HowManyMoreTimes10s.mp3">
+        <source src="assets/audios/HowManyMoreTimes10s.mp3" id="audioSong">
     </audio>
     <div class="play-box" onclick="iniciar()">
         <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
@@ -62,17 +60,14 @@
   </div>
 </body>
 <script>
+
     var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3"], 
-    ["I Can't Quit You Baby", "assets/led_I.jpg",  "ICantQuitYouBaby10s.mp3"], 
-    ["Heartbreaker", "assets/led_2.jpg", "Heartbreaker10s.mp3" ]];
+    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3"], 
+    ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3"]];
     var resposta = false;
     var listened = false
-    var tentativas = 0;
-    var tntv1 = 0;
-    var tntv2 = 0;
-    var tntv3 = 0;
-    var tntv4 = 0;
-    var tntv5 = 0;
+    var tentativas = -1;
+    var vtTentativas = [0,0,0,0,0]
     var progress = document.getElementById("progress")
     var song = document.getElementById("song")
     var cntrlIcon = document.getElementById("cntrlIcon")
@@ -97,7 +92,6 @@
              cntrlIcon.src = "assets/play-solid.svg"
              song.play()
              listened = true
-             tentativas += 1;
         }
     }
     }
@@ -116,12 +110,44 @@
     function pausar() {
     }
     function advinhar(){
+        tentativas += 1;
+        let trys = document.getElementsByClassName("try-box");
         if(iptResposta.value == vtMusicas[musicaAtual][0]){
             alert("Resposta correta")
             nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
-            imgMusica.src = "assets/led_I.jpg"
-            
+            imgMusica.src = vtMusicas[musicaAtual][1];    
+            vtTentativas[tentativas] += 1;
+            console.log(vtTentativas)
+            tentativas = -1;
+            musicaAtual += 1;
+            song.src = vtMusicas[musicaAtual][2];
+            listened = false;
+
         }
+        else{
+            alert("Resposta incorreta")
+        }
+    }
+
+    function finalizar() {
+         fetch("/quiz/pontuacao", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        tntv1Server: vtTentativas[0],
+        tntv2Server: vtTentativas[1],
+        tntv3Server:vtTentativas[2],
+        tntv4Server: vtTentativas[3],
+        tntv5Server: vtTentativas[4],
+        naoRespondidosServer: naoRespondidosVar,
+        seqAcertosServer: seqAcertosVar,
+        errosTotaisServer: ErrosTotaisVar
+      }),
+    })
     }
 
     function pularSegundos(){
