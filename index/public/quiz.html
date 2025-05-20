@@ -61,19 +61,24 @@
 </body>
 <script>
 
-    var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3"], 
-    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3"], 
-    ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3"]];
+    var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"], 
+    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin II"], 
+    ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppellin III"]];
     var resposta = false;
     var listened = false
     var tentativas = -1;
     var vtTentativas = [0,0,0,0,0]
+    var vtAlbum = [0,0,0,0,0,0,0,0,0]
     var progress = document.getElementById("progress")
     var song = document.getElementById("song")
     var cntrlIcon = document.getElementById("cntrlIcon")
     var musicaAtual = 0;
     var idUsuario = sessionStorage.ID_USUARIO
-    console.log(idUsuario)
+    var naoRespondidosVar = vtMusicas.length;
+    var errosTotaisVar = 0;
+    var seqBool = true;
+    var seqAcertosVar = 0;
+    var maiorSeqAcertos = 0;
 
     song.onloadedmetadata = function(){
         progress.max = song.duration
@@ -98,12 +103,6 @@
     }
     }
 
-    if(song.play()){
-        setInterval(()=>{
-            progress.value = song.currentTime
-        }, 500)
-    }
-
     progress.onchange = function(){
         song.play()
         song.currentTime = progress.value
@@ -114,17 +113,25 @@
     function advinhar(){
         tentativas += 1;
         let trys = document.getElementsByClassName("try-box");
+        if(tentativas == 4){
+            alert("Você esgotou as suas tentativas... Mudando para a próxima música")
+            mudarMusica();
+            errosTotaisVar++;
+            naoRespondidosVar--;
+            maiorSeqAcertos = seqAcertosVar;
+            seqAcertosVar = 0;
+            seqBool = false
+        }
         if(iptResposta.value == vtMusicas[musicaAtual][0]){
             alert("Resposta correta")
             nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
             imgMusica.src = vtMusicas[musicaAtual][1];    
-            vtTentativas[tentativas] += 1;
-            console.log(vtTentativas)
-            tentativas = -1;
-            musicaAtual += 1;
-            song.src = vtMusicas[musicaAtual][2];
-            listened = false;
-
+            mudarMusica();
+            seqBool = true;
+            naoRespondidosVar--;
+            if(seqBool){
+                seqAcertosVar += 1;
+            }
         }
         else{
             alert("Resposta incorreta")
@@ -132,6 +139,7 @@
     }
 
     function finalizar() {
+        maiorSeqAcertos = seqAcertosVar;
          fetch("/quiz/pontuacao", {
       method: "POST",
       headers: {
@@ -145,10 +153,10 @@
         tntv3Server:vtTentativas[2],
         tntv4Server: vtTentativas[3],
         tntv5Server: vtTentativas[4],
-        idServer: idUsuario
-        /*naoRespondidosServer: naoRespondidosVar,
-        seqAcertosServer: seqAcertosVar,
-        errosTotaisServer: ErrosTotaisVar*/
+        idServer: idUsuario,
+        naoRespondidosServer: naoRespondidosVar,
+        seqAcertosServer: maiorSeqAcertos,
+        errosTotaisServer: errosTotaisVar
       }),
     })}
 
@@ -156,5 +164,12 @@
         listened = false;
     }
 
+   function mudarMusica(){
+        vtTentativas[tentativas] += 1;
+            tentativas = -1;
+            musicaAtual += 1;
+            song.src = vtMusicas[musicaAtual][2];
+            listened = false;
+   }
 </script>
 </html>
