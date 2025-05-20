@@ -34,9 +34,10 @@
                 <span class="try"></span>
                 <span class="try"></span>
             </div>
-            <img src="assets/question.png" alt="https://www.pngwing.com/pt/free-png-baaoe" class="question-img">
+            <img src="assets/question.png" alt="https://www.pngwing.com/pt/free-png-baaoe" class="question-img" id="imgMusica">
         </div>
-        <input type="text" placeholder="digíte aqui...">
+        <div id="nomeMusica" style="margin-left: 40px;"></div>
+        <input type="text" placeholder="digíte aqui..." id="iptResposta">
         <div class="buttons-box">
             <button onclick="pularSegundos()" style="background-color: black; border: 2px white solid;">Pular</button>
             <button onclick="advinhar()" style="background-color: red; border: inherit;">Confirmar</button>
@@ -52,36 +53,53 @@
   <div class="container-bottom">
      <input type="range" value="0" id="progress">
     <audio controls id="song">
-        <source src="">
+        <source src="assets/audios/HowManyMoreTimes10s.mp3">
     </audio>
-    <div class="play-box" onclick="play()">
+    <div class="play-box" onclick="iniciar()">
         <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
     </div>
     
   </div>
 </body>
 <script>
-    var vtMusicas = [];
+    var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3"], 
+    ["I Can't Quit You Baby", "assets/led_I.jpg",  "ICantQuitYouBaby10s.mp3"], 
+    ["Heartbreaker", "assets/led_2.jpg", "Heartbreaker10s.mp3" ]];
     var resposta = false;
+    var listened = false
     var tentativas = 0;
+    var tntv1 = 0;
+    var tntv2 = 0;
+    var tntv3 = 0;
+    var tntv4 = 0;
+    var tntv5 = 0;
     var progress = document.getElementById("progress")
     var song = document.getElementById("song")
     var cntrlIcon = document.getElementById("cntrlIcon")
+    var musicaAtual = 0;
 
     song.onloadedmetadata = function(){
         progress.max = song.duration
         progress.value = song.currentTime
     }
 
-    function embaralhar(){
+    function iniciar(){
+        if(listened){
+            song.pause();
+            alert("Você já escutou, tente advinhar a música")
+        }
+        else{
         if(cntrlIcon.src == "assets/play-solid.svg"){
-            cntrlIcon.src == "assets/pause-solid.svg"
+            cntrlIcon.src = "assets/pause-solid.svg"
             song.pause()
         }
         else{
-             cntrlIcon.src == "assets/play-solid.svg"
+             cntrlIcon.src = "assets/play-solid.svg"
              song.play()
+             listened = true
+             tentativas += 1;
         }
+    }
     }
 
     if(song.play()){
@@ -95,11 +113,20 @@
         song.currentTime = progress.value
     }
 
+    function pausar() {
+    }
     function advinhar(){
+        if(iptResposta.value == vtMusicas[musicaAtual][0]){
+            alert("Resposta correta")
+            nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
+            imgMusica.src = "assets/led_I.jpg"
+            
+        }
     }
 
     function pularSegundos(){
-
+        listened = false;
     }
+
 </script>
 </html>
