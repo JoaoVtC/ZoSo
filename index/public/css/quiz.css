@@ -38,10 +38,11 @@ a{
 }
 
 a:hover{
-  color: 50;
+  color: red;
   border: 2px solid white;
   margin: 40px;
   align-items: center;
+  border: inherit;
 }
 
 
