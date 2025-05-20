@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/led-zeppelin-ii');
+
 
 *{
   margin: 0;
@@ -71,8 +71,11 @@ body{
 .banner-txt{
   display: flex;
   align-self: center;
+  justify-content: center;
+  flex-wrap: wrap;
   flex-direction: column;
   text-align: center;
+  width: 80vh;
 }
 
 .box-txt{
@@ -163,6 +166,7 @@ p{
   display: flex;
   align-self: center;
   justify-self: center;
+  text-align: center;
 }
 
 .album-container{
