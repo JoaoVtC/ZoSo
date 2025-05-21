@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" href="./css/quiz.css">
+    <link rel="stylesheet" href="./css/quiz.css">
 </head>
+
 <body>
     <div class="header" id="header">
-    <a href="index.html"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
-    <h2 class="button-header"><a href="index.html">Página inicial</a></h2>
-    <h2 class="button-header"><a href="">Estatísticas</a></h2>
-    <h2 class="button-header"><a href="cadastro.html">Cadastro</a></h2>
-    <h2><a class="button-header" href="login.html">Login</a></h2>
-  </div>
-
-  <div class="container-middle">
-    <div class="songs-container">
-        <span class="box-red">
-            <h2>Como jogar?</h2>
-        </span>
+        <a href="index.html"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
+        <h2 class="button-header"><a href="index.html">Página inicial</a></h2>
+        <h2 class="button-header"><a href="">Estatísticas</a></h2>
+        <h2 class="button-header"><a href="cadastro.html">Cadastro</a></h2>
+        <h2><a class="button-header" href="login.html">Login</a></h2>
     </div>
 
-    <div class="play-container">
-        <h1>Advinhe a música</h1>
-        <div class="answer-box">
-            <div class="try-box">
-                <span class="try"></span>
-                <span class="try"></span>
-                <span class="try"></span>
-                <span class="try"></span>
-                <span class="try"></span>
+    <div class="container-middle">
+        <div class="songs-container">
+            <span class="box-red">
+                <h2>Como jogar?</h2>
+            </span>
+        </div>
+
+        <div class="play-container">
+            <h1>Advinhe a música</h1>
+            <div class="answer-box">
+                <div class="try-box">
+                    <span class="try"></span>
+                    <span class="try"></span>
+                    <span class="try"></span>
+                    <span class="try"></span>
+                    <span class="try"></span>
+                </div>
+                <img src="assets/question.png" alt="https://www.pngwing.com/pt/free-png-baaoe" class="question-img"
+                    id="imgMusica">
             </div>
-            <img src="assets/question.png" alt="https://www.pngwing.com/pt/free-png-baaoe" class="question-img" id="imgMusica">
-        </div>
-        <div id="nomeMusica" style="margin-left: 40px;"></div>
-        <input type="text" placeholder="digíte aqui..." id="iptResposta">
-        <div class="buttons-box">
-            <button onclick="pularSegundos()" style="background-color: black; border: 2px white solid;">Pular</button>
-            <button onclick="advinhar()" style="background-color: black; border: 2px white solid;">Confirmar</button>
-            <button onclick="finalizar()"  style="background-color: red; border: inherit;">Finalizar tentativa</button>
-        </div>
-    </div>
+            <div id="nomeMusica" style="margin-left: 40px;"></div>
+            <input type="text" placeholder="digíte aqui..." id="iptResposta">
+            <div class="buttons-box">
+                <button onclick="pularSegundos()"
+                    style="background-color: black; border: 2px white solid;">Pular</button>
+                <button onclick="advinhar()"
+                    style="background-color: black; border: 2px white solid;">Confirmar</button>
+                <button onclick="finalizar()" style="background-color: red; border: inherit;">Finalizar
+                    tentativa</button>
+                <button onclick="mudarMusica()" style="background-color: red; border: inherit;">próxima música</button>
 
-    <div class="howTo-container">
+            </div>
+        </div>
+
+        <div class="howTo-container">
+        </div>
     </div>
-  </div>
-  <div class="container-bottom">
-     <input type="range" value="0" id="progress">
-    <audio controls id="song">
-        <source src="assets/audios/HowManyMoreTimes10s.mp3" id="audioSong">
-    </audio>
-    <div class="play-box" onclick="iniciar()">
-        <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
+    <div class="container-bottom">
+        <input type="range" value="0" id="progress">
+        <audio controls id="song">
+            <source src="assets/audios/HowManyMoreTimes10s.mp3" id="audioSong">
+        </audio>
+        <div class="play-box" onclick="iniciar()">
+            <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
+        </div>
+
     </div>
-    
-  </div>
 </body>
 <script>
 
-    var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"], 
-    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin II"], 
+    var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"],
+    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin II"],
     ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppellin III"]];
     var resposta = false;
     var listened = false
     var tentativas = -1;
-    var vtTentativas = [0,0,0,0,0]
-    var vtAlbum = [0,0,0,0,0,0,0,0,0]
+    var vtTentativas = [0, 0, 0, 0, 0]
+    var vtAlbum = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     var progress = document.getElementById("progress")
     var song = document.getElementById("song")
     var cntrlIcon = document.getElementById("cntrlIcon")
@@ -78,40 +86,46 @@
     var seqAcertosVar = 0;
     var maiorSeqAcertos = 0;
 
-    song.onloadedmetadata = function(){
+    song.onloadedmetadata = function () {
         progress.max = song.duration
         progress.value = song.currentTime
     }
+    if (song.play()) {
+        setInterval(() => {
+            progress.value = song.currentTime
+        }, 500)
+    }
 
-    function iniciar(){
-        if(listened){
+    function iniciar() {
+        if (listened) {
             song.pause();
             alert("Você já escutou, tente advinhar a música")
         }
-        else{
-        if(cntrlIcon.src == "assets/play-solid.svg"){
-            cntrlIcon.src = "assets/pause-solid.svg"
-            song.pause()
+        else {
+            if (cntrlIcon.src == "assets/play-solid.svg") {
+                cntrlIcon.src = "assets/pause-solid.svg"
+                song.pause()
+            }
+            else {
+                cntrlIcon.src = "assets/play-solid.svg"
+                song.play()
+                listened = true
+            }
         }
-        else{
-             cntrlIcon.src = "assets/play-solid.svg"
-             song.play()
-             listened = true
-        }
-    }
     }
 
-    progress.onchange = function(){
+    progress.onchange = function () {
         song.play()
         song.currentTime = progress.value
     }
 
     function pausar() {
     }
-    function advinhar(){
+
+    function advinhar() {
         tentativas += 1;
-        let trys = document.getElementsByClassName("try-box");
-        if(tentativas == 4){
+        var childTry = document.querySelector(`.try-box span:nth-child(${tentativas + 1})`);
+        if (tentativas == 4) {
             alert("Você esgotou as suas tentativas... Mudando para a próxima música")
             mudarMusica();
             errosTotaisVar++;
@@ -120,54 +134,70 @@
             seqAcertosVar = 0;
             seqBool = false
         }
-        if(iptResposta.value == vtMusicas[musicaAtual][0]){
+        if (iptResposta.value == vtMusicas[musicaAtual][0]) {
             alert("Resposta correta")
             nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
-            imgMusica.src = vtMusicas[musicaAtual][1];    
+            imgMusica.src = vtMusicas[musicaAtual][1];
+            childTry.style.backgroundColor = "green"
             mudarMusica();
             seqBool = true;
             naoRespondidosVar--;
-            if(seqBool){
+            if (seqBool) {
                 seqAcertosVar += 1;
             }
         }
-        else{
+        else {
+            childTry.style.backgroundColor = "red"
             alert("Resposta incorreta")
         }
     }
 
     function finalizar() {
         maiorSeqAcertos = seqAcertosVar;
-         fetch("/quiz/pontuacao", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        tntv1Server: vtTentativas[0],
-        tntv2Server: vtTentativas[1],
-        tntv3Server:vtTentativas[2],
-        tntv4Server: vtTentativas[3],
-        tntv5Server: vtTentativas[4],
-        idServer: idUsuario,
-        naoRespondidosServer: naoRespondidosVar,
-        seqAcertosServer: maiorSeqAcertos,
-        errosTotaisServer: errosTotaisVar
-      }),
-    })}
+        fetch("/quiz/pontuacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                tntv1Server: vtTentativas[0],
+                tntv2Server: vtTentativas[1],
+                tntv3Server: vtTentativas[2],
+                tntv4Server: vtTentativas[3],
+                tntv5Server: vtTentativas[4],
+                idServer: idUsuario,
+                naoRespondidosServer: naoRespondidosVar,
+                seqAcertosServer: maiorSeqAcertos,
+                errosTotaisServer: errosTotaisVar
+            }),
+        })
+    }
 
-    function pularSegundos(){
+    function pularSegundos() {
         listened = false;
     }
 
-   function mudarMusica(){
+    function mudarMusica() {
         vtTentativas[tentativas] += 1;
-            tentativas = -1;
-            musicaAtual += 1;
-            song.src = vtMusicas[musicaAtual][2];
-            listened = false;
-   }
+        tentativas = -1;
+        musicaAtual += 1;
+        song.src = vtMusicas[musicaAtual][2];
+        listened = false;
+        const tryBox = document.querySelector('.try-box');
+        setTimeout(function () {
+            const tryPos = tryBox.children;
+
+            // Alterando a cor de fundo de todos os filhos para preto
+            for (let index = 0; index < tryPos.length; index++) {
+                tryPos[index].style.backgroundColor = 'black';
+            }
+             nomeMusica.innerHTML = "";
+            imgMusica.src = "assets/question.png";
+        }, 5000); // apenas para exibir o loading
+
+    }
 </script>
+
 </html>
