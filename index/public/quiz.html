@@ -185,17 +185,15 @@
         musicaAtual += 1;
         song.src = vtMusicas[musicaAtual][2];
         listened = false;
-        const tryBox = document.querySelector('.try-box');
+        var tryBox = document.querySelector('.try-box');
         setTimeout(function () {
-            const tryPos = tryBox.children;
-
-            // Alterando a cor de fundo de todos os filhos para preto
+            var tryPos = tryBox.children;
             for (let index = 0; index < tryPos.length; index++) {
                 tryPos[index].style.backgroundColor = 'black';
             }
              nomeMusica.innerHTML = "";
             imgMusica.src = "assets/question.png";
-        }, 5000); // apenas para exibir o loading
+        }, 5000); 
 
     }
 </script>
