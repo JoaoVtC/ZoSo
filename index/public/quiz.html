@@ -74,17 +74,21 @@
     var listened = false
     var tentativas = -1;
     var vtTentativas = [0, 0, 0, 0, 0]
-    var vtAlbum = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var vtAlbum = [["Led Zeppelin I", 0, 0], ["Led Zeppelin II", 0, 0], ["Led Zeppelin III", 0, 0], ["Led Zeppelin IV", 0, 0], 
+    ["Houses Of The Holy", 0, 0], ["Physical Graffitti", 0, 0], ["Presence", 0, 0], ["In Through The Outdoor", 0, 0], ["Coda", 0, 0]]
     var progress = document.getElementById("progress")
     var song = document.getElementById("song")
     var cntrlIcon = document.getElementById("cntrlIcon")
     var musicaAtual = 0;
-    var idUsuario = sessionStorage.ID_USUARIO
     var naoRespondidosVar = vtMusicas.length;
     var errosTotaisVar = 0;
     var seqBool = true;
     var seqAcertosVar = 0;
     var maiorSeqAcertos = 0;
+    var albumMaisAcertado = "";
+    var albumMaisErrado = "";
+    var qntdAcertosAlbum = 0;
+    var qntdErrosAlbum = 0;
 
     song.onloadedmetadata = function () {
         progress.max = song.duration
@@ -142,9 +146,47 @@
             mudarMusica();
             seqBool = true;
             naoRespondidosVar--;
+            if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+                vtAlbum[0][1]++;
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin II") {
+                vtAlbum[1][1]++;
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
+                vtAlbum[2][1]++; 
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
+                vtAlbum[3][1]++;
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin IV") {
+                vtAlbum[3][1]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "Houses Of The Holy") {
+                vtAlbum[4][1]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "Physical Graffitti") {
+                vtAlbum[5][1]++;
+
+            }
+            else if (vtMusicas[musicaAtual][3] == "Presence") {
+                vtAlbum[6][1]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "In Through The Out Door") {
+                vtAlbum[7][1]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "Coda") {
+                vtAlbum[8][1]++;
+            }
+
+            
             if (seqBool) {
                 seqAcertosVar += 1;
             }
+
         }
         else {
             childTry.style.backgroundColor = "red"
@@ -154,6 +196,17 @@
 
     function finalizar() {
         maiorSeqAcertos = seqAcertosVar;
+        for (var index = 0; index < vtAlbum.length; index++) {
+            if(vtAlbum[index][1] > qntdAcertosAlbum){
+                qntdAcertosAlbum = vtAlbum[index][1];
+                albumMaisAcertado = vtAlbum[index][0];
+            }  
+            if(vtAlbum[index][2] > qntdErrosAlbum){
+                qntdErrosAlbum = vtAlbum[index][2];
+                albumMaisErrado = vtAlbum[index][0];
+            }  
+        }
+        
         fetch("/quiz/pontuacao", {
             method: "POST",
             headers: {
