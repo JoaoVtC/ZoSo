@@ -32,8 +32,8 @@
           <input class="ipt-nick" type="text" id="iptNick" placeholder="Nickname">
           <input class="ipt-email" type="text" id="iptEmail" placeholder="email">
         </div>
-          <input  type="text" id="iptPwd" placeholder="Senha">
-          <input  type="text" id="iptConfPwd" placeholder="Confirmar senha">
+          <input  type="password" id="iptPwd" placeholder="Senha">
+          <input  type="password" id="iptConfPwd" placeholder="Confirmar senha">
           <button onclick="cadastrar()"><h2>Cadastrar</h2></button>
           <div id="divTxt"></div>
       </div>
@@ -119,21 +119,16 @@
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
-        /*if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        if (resposta.ok) {
+          divTxt.innerHTML = "Cadastro realizado com sucesso"
 
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
 
-          limparFormulario();
-          finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
-        }*/
+        }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
