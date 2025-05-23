@@ -68,8 +68,8 @@
 <script>
 
     var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"],
-    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin II"],
-    ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppellin III"]];
+    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin I"],
+    ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppelin II"]];
     var resposta = false;
     var listened = false
     var tentativas = -1;
@@ -133,22 +133,58 @@
         var childTry = document.querySelector(`.try-box span:nth-child(${tentativas + 1})`);
         if (tentativas == 4) {
             alert("Você esgotou as suas tentativas... Mudando para a próxima música")
+
+             if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+                vtAlbum[0][2]++;
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin II") {
+                vtAlbum[1][2]++;
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
+                vtAlbum[2][2]++; 
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
+                vtAlbum[3][2]++;
+            }
+
+            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin IV") {
+                vtAlbum[3][2]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "Houses Of The Holy") {
+                vtAlbum[4][2]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "Physical Graffitti") {
+                vtAlbum[5][2]++;
+
+            }
+            else if (vtMusicas[musicaAtual][3] == "Presence") {
+                vtAlbum[6][2]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "In Through The Out Door") {
+                vtAlbum[7][2]++;
+            }
+            else if (vtMusicas[musicaAtual][3] == "Coda") {
+                vtAlbum[8][2]++;
+            }
+            
             mudarMusica();
             errosTotaisVar++;
             naoRespondidosVar--;
             maiorSeqAcertos = seqAcertosVar;
             seqAcertosVar = 0;
             seqBool = false
+
         }
         if (iptResposta.value == vtMusicas[musicaAtual][0]) {
             alert("Resposta correta")
             nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
             imgMusica.src = vtMusicas[musicaAtual][1];
             childTry.style.backgroundColor = "green"
-            mudarMusica();
-            seqBool = true;
-            naoRespondidosVar--;
-            if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+
+             if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
                 vtAlbum[0][1]++;
             }
 
@@ -184,10 +220,11 @@
                 vtAlbum[8][1]++;
             }
 
-            
-            if (seqBool) {
-                seqAcertosVar += 1;
-            }
+            mudarMusica();
+            seqBool = true;
+            naoRespondidosVar--;
+           
+
 
         }
         else {
@@ -208,7 +245,8 @@
                 albumMaisErrado = vtAlbum[index][0];
             }  
         }
-        
+        console.log(albumMaisAcertado, qntdAcertosAlbum + "\n", albumMaisErrado, qntdErrosAlbum)
+        console.log(vtAlbum)
         fetch("/quiz/pontuacao", {
             method: "POST",
             headers: {
