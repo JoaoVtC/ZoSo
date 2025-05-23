@@ -89,6 +89,8 @@
     var albumMaisErrado = "";
     var qntdAcertosAlbum = 0;
     var qntdErrosAlbum = 0;
+    var idUsuario = sessionStorage.getItem("ID_USUARIO")
+    console.log(idUsuario)
 
     song.onloadedmetadata = function () {
         progress.max = song.duration

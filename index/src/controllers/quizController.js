@@ -2,7 +2,7 @@ var quizModel = require("../models/quizModel");
 
 function pontuacao(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var idUsuario = 2;
+    var idUsuario = req.body.idServer;
     var tntv1 = req.body.tntv1Server;
     var tntv2 = req.body.tntv2Server;
     var tntv3 = req.body.tntv3Server;

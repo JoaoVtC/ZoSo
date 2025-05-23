@@ -76,10 +76,13 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nickname;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.SENHA_USUARIO = json.senha;
                     window.location = "quiz.html"
+
                 });
+
+                console.log(sessionStorage.getItem("ID_USUARIO"))
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
@@ -94,7 +97,6 @@
         })
 
         return false;
-        console.log(resposta)
     }
 
 </script>
