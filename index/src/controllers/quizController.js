@@ -11,11 +11,14 @@ function pontuacao(req, res) {
     var naoRespondido = req.body.naoRespondidosServer;
     var seqAcertos = req.body.seqAcertosServer;
     var errosTotais = req.body.errosTotaisServer
-
+    var albumMaisAcertado = req.body.albumMaisAcertadoServer
+    var albumMaisErrado = req.body.albumMaisErradoServer
+    var qntdAcertos = req.body.qntdAcertosAlbumServer
+    var qntdErros = req.body.qntdErrosAlbumServer
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         quizModel.pontuacao(idUsuario,tntv1, tntv2, tntv3, tntv4, tntv5,
-            naoRespondido, seqAcertos, errosTotais
+            naoRespondido, seqAcertos, errosTotais, albumMaisAcertado, albumMaisErrado, qntdAcertos, qntdErros
         )
             .then(
                 function (resultado) {
