@@ -23,12 +23,13 @@ function pontuacao(req, res) {
             .then(
                 function (resultado) {
                     res.json(resultado);
+                    buscarPontuacaoPorUsuario(idUsuario);
                 }
             ).catch(
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao cadastrar a pontuação! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -37,6 +38,24 @@ function pontuacao(req, res) {
     
 }
 
+
+function buscarPontuacaoPorUsuario(idUsuario) {
+
+  quizModel.buscarPontuacaoPorUsuario(idUsuario).then((resultado) => {
+    if (resultado.length > 0) {
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar as pontuações: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
+
 module.exports = {
-    pontuacao
+    pontuacao,
+    buscarPontuacaoPorUsuario
 }
