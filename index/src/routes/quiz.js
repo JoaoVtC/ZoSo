@@ -8,5 +8,10 @@ router.post("/pontuacao", function (req, res) {
     quizController.pontuacao(req, res);
 })
 
+router.get("/:idUsuario", function (req, res) {
+    quizController.obterPontuacao(req, res);
+})
+
+
 
 module.exports = router;
