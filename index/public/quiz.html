@@ -64,9 +64,10 @@
         </div>
 
     </div>
-    <div class="dashboard">
+    <div class="dashboard" id="dashboard">
         <canvas id="myChart"></canvas>
     </div>
+    <div id="graficos" class="graficos"></div>
 </body>
 <script>
 
@@ -287,10 +288,11 @@ function obterPontuacao(idUsuario) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    sessionStorage.PONTUACAO_USUARIOS = JSON.stringify(resposta);
                     // resposta.reverse();
 
                     // plotarGrafico(resposta, idAquario);
-
+                    exibirPontuacoesDoUsuario();
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -319,23 +321,18 @@ function obterPontuacao(idUsuario) {
 
     }
 
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
-
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
+    function exibirPontuacoesDoUsuario() {
+        var pontuacoes = JSON.parse(sessionStorage.PONTUACAO_USUARIOS);
+        console.log(pontuacoes);
+        
+        pontuacoes.forEach(item => {
+            graficos.innerHTML += `
+                <div id="grafico${item.idPontuacao}" class="display-none">
                     <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
+                        <span id="tituloAquario${item.idPontuacao}">$Pontuação ${item.idPontuacao}</span>
                     </h3>
                     <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                        <canvas id="myChartCanvas${item.idPontuacao}"></canvas>
                     </div>
                 </div>
             `

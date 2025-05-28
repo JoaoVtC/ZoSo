@@ -63,7 +63,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 220vh;
+  width: 100vh;
   padding: 20px;
 }
 
@@ -126,7 +126,7 @@ p{
 .box-album{
   display: flex;
   flex-direction: column;
-  width: 100vh;
+  width: 100%;
 }
 
 
@@ -217,6 +217,8 @@ p{
 .album-img{
   width: 275px;
   height: 275px;
+ display: flex;
+ align-self: center;
 }
 .album-txt{
   width: 45vh;
