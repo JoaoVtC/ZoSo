@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/quiz.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -64,10 +65,8 @@
         </div>
 
     </div>
-    <div class="dashboard" id="dashboard">
-        <canvas id="myChart"></canvas>
+    <div id="graficos" class="graficos">
     </div>
-    <div id="graficos" class="graficos"></div>
 </body>
 <script>
 
@@ -282,17 +281,16 @@
         listened = false;
     }
 
-function obterPontuacao(idUsuario) {
+    function obterPontuacao(idUsuario) {
 
         fetch(`/quiz/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     sessionStorage.PONTUACAO_USUARIOS = JSON.stringify(resposta);
-                    // resposta.reverse();
 
-                    // plotarGrafico(resposta, idAquario);
                     exibirPontuacoesDoUsuario();
+                     plotarGrafico(resposta, idUsuario);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -324,19 +322,73 @@ function obterPontuacao(idUsuario) {
     function exibirPontuacoesDoUsuario() {
         var pontuacoes = JSON.parse(sessionStorage.PONTUACAO_USUARIOS);
         console.log(pontuacoes);
-        
+        graficos.style.display = "flex";
         pontuacoes.forEach(item => {
             graficos.innerHTML += `
                 <div id="grafico${item.idPontuacao}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.idPontuacao}">$Pontuação ${item.idPontuacao}</span>
-                    </h3>
+                    <h2 class="tituloGraficos">
+                        <span id="tituloPontuacao${item.idPontuacao}">Pontuação ${item.idPontuacao}</span>
+                    </h2>
                     <div class="graph">
-                        <canvas id="myChartCanvas${item.idPontuacao}"></canvas>
+                        <canvas id="myChart${item.idPontuacao}"></canvas>
                     </div>
                 </div>
             `
         });
+    }
+
+    function plotarGrafico(resposta, idUsuario) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = ["Tentativa 1", "Tentativa 2", "Tentativa 3", "Tentativa 4", "Tentativa 5"];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Acertos por tentativa',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+         for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.datasets[0].data.push(registro.acertosTntv1);
+            dados.datasets[0].data.push(registro.acertosTntv2);
+            dados.datasets[0].data.push(registro.acertosTntv3);
+            dados.datasets[0].data.push(registro.acertosTntv4);
+            dados.datasets[0].data.push(registro.acertosTntv5);
+         }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChart${registro.idPontuacao}`),
+            config
+        );
     }
 </script>
 
