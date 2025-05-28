@@ -77,7 +77,7 @@
     var listened = false
     var tentativas = -1;
     var vtTentativas = [0, 0, 0, 0, 0]
-    var vtAlbum = [["Led Zeppelin I", 0, 0], ["Led Zeppelin II", 0, 0], ["Led Zeppelin III", 0, 0], ["Led Zeppelin IV", 0, 0], 
+    var vtAlbum = [["Led Zeppelin I", 0, 0], ["Led Zeppelin II", 0, 0], ["Led Zeppelin III", 0, 0], ["Led Zeppelin IV", 0, 0],
     ["Houses Of The Holy", 0, 0], ["Physical Graffitti", 0, 0], ["Presence", 0, 0], ["In Through The Outdoor", 0, 0], ["Coda", 0, 0]]
     var progress = document.getElementById("progress")
     var song = document.getElementById("song")
@@ -137,7 +137,7 @@
         if (tentativas == 4) {
             alert("Você esgotou as suas tentativas... Mudando para a próxima música")
 
-             if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+            if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
                 vtAlbum[0][2]++;
             }
 
@@ -146,7 +146,7 @@
             }
 
             else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
-                vtAlbum[2][2]++; 
+                vtAlbum[2][2]++;
             }
 
             else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
@@ -172,7 +172,7 @@
             else if (vtMusicas[musicaAtual][3] == "Coda") {
                 vtAlbum[8][2]++;
             }
-            
+
             mudarMusica();
             errosTotaisVar++;
             naoRespondidosVar--;
@@ -187,7 +187,7 @@
             imgMusica.src = vtMusicas[musicaAtual][1];
             childTry.style.backgroundColor = "green"
 
-             if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+            if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
                 vtAlbum[0][1]++;
             }
 
@@ -196,7 +196,7 @@
             }
 
             else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
-                vtAlbum[2][1]++; 
+                vtAlbum[2][1]++;
             }
 
             else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
@@ -226,7 +226,7 @@
             mudarMusica();
             seqBool = true;
             naoRespondidosVar--;
-           
+
 
 
         }
@@ -239,14 +239,14 @@
     function finalizar() {
         maiorSeqAcertos = seqAcertosVar;
         for (var index = 0; index < vtAlbum.length; index++) {
-            if(vtAlbum[index][1] > qntdAcertosAlbum){
+            if (vtAlbum[index][1] > qntdAcertosAlbum) {
                 qntdAcertosAlbum = vtAlbum[index][1];
                 albumMaisAcertado = vtAlbum[index][0];
-            }  
-            if(vtAlbum[index][2] > qntdErrosAlbum){
+            }
+            if (vtAlbum[index][2] > qntdErrosAlbum) {
                 qntdErrosAlbum = vtAlbum[index][2];
                 albumMaisErrado = vtAlbum[index][0];
-            }  
+            }
         }
         console.log(albumMaisAcertado, qntdAcertosAlbum + "\n", albumMaisErrado, qntdErrosAlbum)
         console.log(vtAlbum)
@@ -273,10 +273,32 @@
                 qntdErrosAlbumServer: qntdErrosAlbum
             }),
         })
+
+        obterPontuacao(idUsuario);
     }
 
-    function pularSegundos() {
+    function pularSegundos(idUsuario) {
         listened = false;
+    }
+
+function obterPontuacao(idUsuario) {
+
+        fetch(`/dashboard/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // resposta.reverse();
+
+                    // plotarGrafico(resposta, idAquario);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
     function mudarMusica() {
@@ -291,10 +313,33 @@
             for (var index = 0; index < tryPos.length; index++) {
                 tryPos[index].style.backgroundColor = 'black';
             }
-             nomeMusica.innerHTML = "";
+            nomeMusica.innerHTML = "";
             imgMusica.src = "assets/question.png";
-        }, 5000); 
+        }, 5000);
 
+    }
+
+    function exibirAquariosDoUsuario() {
+        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
+        aquarios.forEach(item => {
+            document.getElementById("btnAquario").innerHTML += `
+            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+            `
+
+            document.getElementById("graficos").innerHTML += `
+                <div id="grafico${item.id}" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario${item.id}">${item.descricao}</span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas${item.id}"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                    </div>
+                </div>
+            `
+        });
     }
 </script>
 
