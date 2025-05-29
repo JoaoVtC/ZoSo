@@ -4,9 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Zoso | Quiz</title>
         <link rel="stylesheet" href="./css/quiz.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="icon" href="./assets/logo.png">
     </head>
 
     <body>
@@ -85,7 +86,6 @@
         var musicaAtual = 0;
         var naoRespondidosVar = vtMusicas.length;
         var errosTotaisVar = 0;
-        var seqBool = true;
         var seqAcertosVar = 0;
         var maiorSeqAcertos = 0;
         var albumMaisAcertado = "Sem álbum";
@@ -94,6 +94,7 @@
         var qntdErrosAlbum = 0;
         var idUsuario = sessionStorage.getItem("ID_USUARIO")
         var acertosTotais = 0;
+        var seqAcertos = 0;
 
         song.onloadedmetadata = function () {
             progress.max = song.duration
@@ -173,8 +174,7 @@
                 errosTotaisVar++;
                 naoRespondidosVar--;
                 maiorSeqAcertos = seqAcertosVar;
-                seqAcertosVar = 0;
-                seqBool = false
+                seqAcertos = 0;
 
             }
             else if (iptResposta.value == vtMusicas[musicaAtual][0]) {
@@ -213,13 +213,12 @@
                 else if (vtMusicas[musicaAtual][3] == "Coda") {
                     vtAlbum[8][1]++;
                 }
-
+                seqAcertos++;
                 mudarMusica();
-                seqBool = true;
                 naoRespondidosVar--;
-
-
-
+                acertosTotais++;
+                
+                seqAcertos > seqAcertosVar ? seqAcertosVar = seqAcertos : seqAcertosVar = seqAcertos
             }
             else {
                 childTry.style.backgroundColor = "red"
@@ -259,9 +258,7 @@
                     seqAcertosServer: maiorSeqAcertos,
                     errosTotaisServer: errosTotaisVar,
                     albumMaisAcertadoServer: albumMaisAcertado,
-                    albumMaisErradoServer: albumMaisErrado,
-                    qntdAcertosAlbumServer: qntdAcertosAlbum,
-                    qntdErrosAlbumServer: qntdErrosAlbum
+                    albumMaisErradoServer: albumMaisErrado
                 }),
             })
             .then(() => {
@@ -314,7 +311,7 @@
 
         function exibirPontuacoesDoUsuario() {
             var pontuacoes = JSON.parse(sessionStorage.PONTUACAO_USUARIOS);
-            console.log(pontuacoes);
+            console.log("Pontuações:" + pontuacoes);
             graficos.style.display = "flex";
                 graficos.innerHTML += `
                     <div id="grafico${pontuacoes[pontuacoes.length - 1].idPontuacao}" class="display-none">
@@ -352,7 +349,6 @@
         function plotarGrafico(resposta, idUsuario) {
 
             console.log('iniciando plotagem do gráfico...');
-
             // Criando estrutura para plotar gráfico - labels
             let labels = ["Tentativa 1", "Tentativa 2", "Tentativa 3", "Tentativa 4", "Tentativa 5"];
 
@@ -365,9 +361,8 @@
                     fill: false,
                     borderColor: 'rgb(75, 192, 192)',
                     backgroundColor: '#FF0000',
-                    color: "#FFF",
-                    tension: 0.1
-                }]
+                    tension: 0.1,
+                }],
             };
 
             console.log('----------------------------------------------')
@@ -383,12 +378,11 @@
                 dados.datasets[0].data.push(registro.acertosTntv4);
                 dados.datasets[0].data.push(registro.acertosTntv5);
             }
-            console.log(acertosTotais)
             errosTotaisVar = registro.errosTotais
             albumMaisAcertado = registro.albumMaisAcertado
             naoRespondidosVar = registro.naoRespondido
             albumMaisErrado = registro.albumMaisErrado
-
+            console.log(acertosTotais)
             console.log('----------------------------------------------')
             console.log('O gráfico será plotado com os respectivos valores:')
             console.log('Labels:')
@@ -401,6 +395,7 @@
             const config = {
                 type: 'bar',
                 data: dados,
+                
             };
 
             // Adicionando gráfico criado em div na tela
