@@ -88,8 +88,8 @@
         var seqBool = true;
         var seqAcertosVar = 0;
         var maiorSeqAcertos = 0;
-        var albumMaisAcertado = "";
-        var albumMaisErrado = "";
+        var albumMaisAcertado = "Sem álbum";
+        var albumMaisErrado = "Sem álbum";
         var qntdAcertosAlbum = 0;
         var qntdErrosAlbum = 0;
         var idUsuario = sessionStorage.getItem("ID_USUARIO")
@@ -375,17 +375,15 @@
             console.log(resposta)
 
             // Inserindo valores recebidos em estrutura para plotar o gráfico
-            for (i = 0; i < resposta.length; i++) {
-                var registro = resposta[i];
+            for (var i = 0; i < resposta.length; i++) {
+                registro = resposta[i];
                 dados.datasets[0].data.push(registro.acertosTntv1);
                 dados.datasets[0].data.push(registro.acertosTntv2);
                 dados.datasets[0].data.push(registro.acertosTntv3);
                 dados.datasets[0].data.push(registro.acertosTntv4);
                 dados.datasets[0].data.push(registro.acertosTntv5);
             }
-
-            acertosTotais = registro.acertosTntv1 + registro.acertosTntv2 + registro.acertosTntv3 + registro.acertosTntv4 + 
-            registro.acertosTntv
+            console.log(acertosTotais)
             errosTotaisVar = registro.errosTotais
             albumMaisAcertado = registro.albumMaisAcertado
             naoRespondidosVar = registro.naoRespondido

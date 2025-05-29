@@ -19,7 +19,7 @@ function pontuacao(idUsuario, tntv1, tntv2, tntv3, tntv4, tntv5,
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
         INSERT INTO pontuacaoTotal (fkUsuario, acertosTntv1, acertosTntv2, acertosTntv3, acertosTntv4, acertosTntv5,
-            naoRespondido, errosTotais, seqAcertos) VALUES (${idUsuario}, ${tntv1}, ${tntv2}, ${tntv3}, ${tntv4}, ${tntv5}, ${naoRespondido}, ${errosTotais}, ${seqAcertos});   
+            naoRespondido, errosTotais,acertosTotais,  seqAcertos) VALUES (${idUsuario}, ${tntv1}, ${tntv2}, ${tntv3}, ${tntv4}, ${tntv5}, ${naoRespondido}, ${errosTotais}, ${seqAcertos});   
         `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql)
