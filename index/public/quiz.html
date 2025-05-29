@@ -1,424 +1,416 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+    <!DOCTYPE html>
+    <html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/quiz.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/quiz.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
 
-<body>
-    <div class="header" id="header">
-        <a href="index.html"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
-        <h2 class="button-header"><a href="index.html">Página inicial</a></h2>
-        <h2 class="button-header"><a href="">Estatísticas</a></h2>
-        <h2 class="button-header"><a href="cadastro.html">Cadastro</a></h2>
-        <h2><a class="button-header" href="login.html">Login</a></h2>
-    </div>
-
-    <div class="container-middle">
-        <div class="songs-container">
-            <span class="box-red">
-                <h2>Como jogar?</h2>
-            </span>
+    <body>
+        <div class="header" id="header">
+            <a href="index.html"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
+            <h2 class="button-header"><a href="index.html">Página inicial</a></h2>
+            <h2 class="button-header"><a href="">Estatísticas</a></h2>
+            <h2 class="button-header"><a href="cadastro.html">Cadastro</a></h2>
+            <h2><a class="button-header" href="login.html">Login</a></h2>
         </div>
 
-        <div class="play-container">
-            <h1>Advinhe a música</h1>
-            <div class="answer-box">
-                <div class="try-box">
-                    <span class="try"></span>
-                    <span class="try"></span>
-                    <span class="try"></span>
-                    <span class="try"></span>
-                    <span class="try"></span>
+        <div class="container-middle">
+            <div class="songs-container">
+                <span class="box-red">
+                    <h2>Como jogar?</h2>
+                </span>
+            </div>
+
+            <div class="play-container">
+                <h1>Advinhe a música</h1>
+                <div class="answer-box">
+                    <div class="try-box">
+                        <span class="try"></span>
+                        <span class="try"></span>
+                        <span class="try"></span>
+                        <span class="try"></span>
+                        <span class="try"></span>
+                    </div>
+                    <img src="assets/question.png" alt="https://www.pngwing.com/pt/free-png-baaoe" class="question-img"
+                        id="imgMusica">
                 </div>
-                <img src="assets/question.png" alt="https://www.pngwing.com/pt/free-png-baaoe" class="question-img"
-                    id="imgMusica">
+                <div id="nomeMusica" style="margin-left: 40px;"></div>
+                <input type="text" placeholder="digíte aqui..." id="iptResposta">
+                <div class="buttons-box">
+                    <button onclick="pularSegundos()"
+                        style="background-color: black; border: 2px white solid;">Pular</button>
+                    <button onclick="advinhar()"
+                        style="background-color: black; border: 2px white solid;">Confirmar</button>
+                    <button onclick="finalizar()" style="background-color: red; border: inherit;">Finalizar
+                        tentativa</button>
+                    <button onclick="mudarMusica()" style="background-color: red; border: inherit;">próxima música</button>
+
+                </div>
             </div>
-            <div id="nomeMusica" style="margin-left: 40px;"></div>
-            <input type="text" placeholder="digíte aqui..." id="iptResposta">
-            <div class="buttons-box">
-                <button onclick="pularSegundos()"
-                    style="background-color: black; border: 2px white solid;">Pular</button>
-                <button onclick="advinhar()"
-                    style="background-color: black; border: 2px white solid;">Confirmar</button>
-                <button onclick="finalizar()" style="background-color: red; border: inherit;">Finalizar
-                    tentativa</button>
-                <button onclick="mudarMusica()" style="background-color: red; border: inherit;">próxima música</button>
 
+            <div class="howTo-container">
             </div>
         </div>
+        <div class="container-bottom">
+            <input type="range" value="0" id="progress">
+            <audio controls id="song">
+                <source src="assets/audios/HowManyMoreTimes10s.mp3" id="audioSong">
+            </audio>
+            <div class="play-box" onclick="iniciar()">
+                <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
+            </div>
 
-        <div class="howTo-container">
         </div>
-    </div>
-    <div class="container-bottom">
-        <input type="range" value="0" id="progress">
-        <audio controls id="song">
-            <source src="assets/audios/HowManyMoreTimes10s.mp3" id="audioSong">
-        </audio>
-        <div class="play-box" onclick="iniciar()">
-            <img src="assets/play-solid.svg" alt="" width="30px" height="55px" id="cntrlIcon">
+        <div id="graficos" class="graficos">
         </div>
+    </body>
+    <script>
 
-    </div>
-    <div id="graficos" class="graficos">
-    </div>
-</body>
-<script>
+        var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"],
+        ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin I"],
+        ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppelin II"]];
+        var resposta = false;
+        var listened = false
+        var tentativas = -1;
+        var vtTentativas = [0, 0, 0, 0, 0]
+        var vtAlbum = [["Led Zeppelin I", 0, 0], ["Led Zeppelin II", 0, 0], ["Led Zeppelin III", 0, 0], ["Led Zeppelin IV", 0, 0],
+        ["Houses Of The Holy", 0, 0], ["Physical Graffitti", 0, 0], ["Presence", 0, 0], ["In Through The Outdoor", 0, 0], ["Coda", 0, 0]]
+        var progress = document.getElementById("progress")
+        var song = document.getElementById("song")
+        var cntrlIcon = document.getElementById("cntrlIcon")
+        var musicaAtual = 0;
+        var naoRespondidosVar = vtMusicas.length;
+        var errosTotaisVar = 0;
+        var seqBool = true;
+        var seqAcertosVar = 0;
+        var maiorSeqAcertos = 0;
+        var albumMaisAcertado = "";
+        var albumMaisErrado = "";
+        var qntdAcertosAlbum = 0;
+        var qntdErrosAlbum = 0;
+        var idUsuario = sessionStorage.getItem("ID_USUARIO")
+        var acertosTotais = 0;
 
-    var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"],
-    ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin I"],
-    ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppelin II"]];
-    var resposta = false;
-    var listened = false
-    var tentativas = -1;
-    var vtTentativas = [0, 0, 0, 0, 0]
-    var vtAlbum = [["Led Zeppelin I", 0, 0], ["Led Zeppelin II", 0, 0], ["Led Zeppelin III", 0, 0], ["Led Zeppelin IV", 0, 0],
-    ["Houses Of The Holy", 0, 0], ["Physical Graffitti", 0, 0], ["Presence", 0, 0], ["In Through The Outdoor", 0, 0], ["Coda", 0, 0]]
-    var progress = document.getElementById("progress")
-    var song = document.getElementById("song")
-    var cntrlIcon = document.getElementById("cntrlIcon")
-    var musicaAtual = 0;
-    var naoRespondidosVar = vtMusicas.length;
-    var errosTotaisVar = 0;
-    var seqBool = true;
-    var seqAcertosVar = 0;
-    var maiorSeqAcertos = 0;
-    var albumMaisAcertado = "";
-    var albumMaisErrado = "";
-    var qntdAcertosAlbum = 0;
-    var qntdErrosAlbum = 0;
-    var idUsuario = sessionStorage.getItem("ID_USUARIO")
-    var acertosTotais = 0;
-
-    song.onloadedmetadata = function () {
-        progress.max = song.duration
-        progress.value = song.currentTime
-    }
-    if (song.play()) {
-        setInterval(() => {
+        song.onloadedmetadata = function () {
+            progress.max = song.duration
             progress.value = song.currentTime
-        }, 500)
-    }
-
-    function iniciar() {
-        if (listened) {
-            song.pause();
-            alert("Você já escutou, tente advinhar a música")
         }
-        else {
-            if (cntrlIcon.src == "assets/play-solid.svg") {
-                cntrlIcon.src = "assets/pause-solid.svg"
-                song.pause()
+        if (song.play()) {
+            setInterval(() => {
+                progress.value = song.currentTime
+            }, 500)
+        }
+
+        function iniciar() {
+            if (listened) {
+                song.pause();
+                alert("Você já escutou, tente advinhar a música")
             }
             else {
-                cntrlIcon.src = "assets/play-solid.svg"
-                song.play()
-                listened = true
+                if (cntrlIcon.src == "assets/play-solid.svg") {
+                    cntrlIcon.src = "assets/pause-solid.svg"
+                    song.pause()
+                }
+                else {
+                    cntrlIcon.src = "assets/play-solid.svg"
+                    song.play()
+                    listened = true
+                }
             }
         }
-    }
 
-    progress.onchange = function () {
-        song.play()
-        song.currentTime = progress.value
-    }
+        progress.onchange = function () {
+            song.play()
+            song.currentTime = progress.value
+        }
 
-    function pausar() {
-    }
+        function pausar() {
+        }
 
-    function advinhar() {
-        tentativas += 1;
-        var childTry = document.querySelector(`.try-box span:nth-child(${tentativas + 1})`);
-        if (tentativas == 5) {
-            alert("Você esgotou as suas tentativas... Mudando para a próxima música")
+        function advinhar() {
+            tentativas += 1;
+            var childTry = document.querySelector(`.try-box span:nth-child(${tentativas + 1})`);
+            if (tentativas == 5) {
+                alert("Você esgotou as suas tentativas... Mudando para a próxima música")
 
-            if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
-                vtAlbum[0][2]++;
-            }
+                if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+                    vtAlbum[0][2]++;
+                }
 
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin II") {
-                vtAlbum[1][2]++;
-            }
+                else if (vtMusicas[musicaAtual][3] == "Led Zeppelin II") {
+                    vtAlbum[1][2]++;
+                }
 
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
-                vtAlbum[2][2]++;
-            }
+                else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
+                    vtAlbum[2][2]++;
+                }
 
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
-                vtAlbum[3][2]++;
-            }
+                else if (vtMusicas[musicaAtual][3] == "Led Zeppelin IV") {
+                    vtAlbum[3][2]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Houses Of The Holy") {
+                    vtAlbum[4][2]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Physical Graffitti") {
+                    vtAlbum[5][2]++;
 
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin IV") {
-                vtAlbum[3][2]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "Houses Of The Holy") {
-                vtAlbum[4][2]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "Physical Graffitti") {
-                vtAlbum[5][2]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Presence") {
+                    vtAlbum[6][2]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "In Through The Out Door") {
+                    vtAlbum[7][2]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Coda") {
+                    vtAlbum[8][2]++;
+                }
+
+                mudarMusica();
+                errosTotaisVar++;
+                naoRespondidosVar--;
+                maiorSeqAcertos = seqAcertosVar;
+                seqAcertosVar = 0;
+                seqBool = false
 
             }
-            else if (vtMusicas[musicaAtual][3] == "Presence") {
-                vtAlbum[6][2]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "In Through The Out Door") {
-                vtAlbum[7][2]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "Coda") {
-                vtAlbum[8][2]++;
-            }
+            else if (iptResposta.value == vtMusicas[musicaAtual][0]) {
+                alert("Resposta correta")
+                nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
+                imgMusica.src = vtMusicas[musicaAtual][1];
+                childTry.style.backgroundColor = "green"
 
-            mudarMusica();
-            errosTotaisVar++;
-            naoRespondidosVar--;
+                if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
+                    vtAlbum[0][1]++;
+                }
+
+                else if (vtMusicas[musicaAtual][3] == "Led Zeppelin II") {
+                    vtAlbum[1][1]++;
+                }
+
+                else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
+                    vtAlbum[2][1]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Led Zeppelin IV") {
+                    vtAlbum[3][1]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Houses Of The Holy") {
+                    vtAlbum[4][1]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Physical Graffitti") {
+                    vtAlbum[5][1]++;
+
+                }
+                else if (vtMusicas[musicaAtual][3] == "Presence") {
+                    vtAlbum[6][1]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "In Through The Out Door") {
+                    vtAlbum[7][1]++;
+                }
+                else if (vtMusicas[musicaAtual][3] == "Coda") {
+                    vtAlbum[8][1]++;
+                }
+
+                mudarMusica();
+                seqBool = true;
+                naoRespondidosVar--;
+
+
+
+            }
+            else {
+                childTry.style.backgroundColor = "red"
+                alert("Resposta incorreta")
+            }
+        }
+
+        function finalizar() {
             maiorSeqAcertos = seqAcertosVar;
-            seqAcertosVar = 0;
-            seqBool = false
-
+            for (var index = 0; index < vtAlbum.length; index++) {
+                if (vtAlbum[index][1] > qntdAcertosAlbum) {
+                    qntdAcertosAlbum = vtAlbum[index][1];
+                    albumMaisAcertado = vtAlbum[index][0];
+                }
+                if (vtAlbum[index][2] > qntdErrosAlbum) {
+                    qntdErrosAlbum = vtAlbum[index][2];
+                    albumMaisErrado = vtAlbum[index][0];
+                }
+            }
+            console.log(albumMaisAcertado, qntdAcertosAlbum + "\n", albumMaisErrado, qntdErrosAlbum)
+            console.log(vtAlbum)
+            fetch("/quiz/pontuacao", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    tntv1Server: vtTentativas[0],
+                    tntv2Server: vtTentativas[1],
+                    tntv3Server: vtTentativas[2],
+                    tntv4Server: vtTentativas[3],
+                    tntv5Server: vtTentativas[4],
+                    idServer: idUsuario,
+                    naoRespondidosServer: naoRespondidosVar,
+                    seqAcertosServer: maiorSeqAcertos,
+                    errosTotaisServer: errosTotaisVar,
+                    albumMaisAcertadoServer: albumMaisAcertado,
+                    albumMaisErradoServer: albumMaisErrado,
+                    qntdAcertosAlbumServer: qntdAcertosAlbum,
+                    qntdErrosAlbumServer: qntdErrosAlbum
+                }),
+            })
+            .then(() => {
+                return obterPontuacao(idUsuario)
+            }
+            )
         }
-        else if (iptResposta.value == vtMusicas[musicaAtual][0]) {
-            alert("Resposta correta")
-            nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
-            imgMusica.src = vtMusicas[musicaAtual][1];
-            childTry.style.backgroundColor = "green"
 
-            if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
-                vtAlbum[0][1]++;
-            }
-
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin II") {
-                vtAlbum[1][1]++;
-            }
-
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
-                vtAlbum[2][1]++;
-            }
-
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin III") {
-                vtAlbum[3][1]++;
-            }
-
-            else if (vtMusicas[musicaAtual][3] == "Led Zeppelin IV") {
-                vtAlbum[3][1]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "Houses Of The Holy") {
-                vtAlbum[4][1]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "Physical Graffitti") {
-                vtAlbum[5][1]++;
-
-            }
-            else if (vtMusicas[musicaAtual][3] == "Presence") {
-                vtAlbum[6][1]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "In Through The Out Door") {
-                vtAlbum[7][1]++;
-            }
-            else if (vtMusicas[musicaAtual][3] == "Coda") {
-                vtAlbum[8][1]++;
-            }
-
-            mudarMusica();
-            seqBool = true;
-            naoRespondidosVar--;
-
-
-
+        function pularSegundos(idUsuario) {
+            listened = false;
         }
-        else {
-            childTry.style.backgroundColor = "red"
-            alert("Resposta incorreta")
-        }
-    }
 
-    function finalizar() {
-        maiorSeqAcertos = seqAcertosVar;
-        for (var index = 0; index < vtAlbum.length; index++) {
-            if (vtAlbum[index][1] > qntdAcertosAlbum) {
-                qntdAcertosAlbum = vtAlbum[index][1];
-                albumMaisAcertado = vtAlbum[index][0];
-            }
-            if (vtAlbum[index][2] > qntdErrosAlbum) {
-                qntdErrosAlbum = vtAlbum[index][2];
-                albumMaisErrado = vtAlbum[index][0];
-            }
-        }
-        console.log(albumMaisAcertado, qntdAcertosAlbum + "\n", albumMaisErrado, qntdErrosAlbum)
-        console.log(vtAlbum)
-        fetch("/quiz/pontuacao", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                tntv1Server: vtTentativas[0],
-                tntv2Server: vtTentativas[1],
-                tntv3Server: vtTentativas[2],
-                tntv4Server: vtTentativas[3],
-                tntv5Server: vtTentativas[4],
-                idServer: idUsuario,
-                naoRespondidosServer: naoRespondidosVar,
-                seqAcertosServer: maiorSeqAcertos,
-                errosTotaisServer: errosTotaisVar,
-                albumMaisAcertadoServer: albumMaisAcertado,
-                albumMaisErradoServer: albumMaisErrado,
-                qntdAcertosAlbumServer: qntdAcertosAlbum,
-                qntdErrosAlbumServer: qntdErrosAlbum
-            }),
-        })
+        function obterPontuacao(idUsuario) {
 
-        obterPontuacao(idUsuario);
-    }
+            fetch(`/quiz/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        sessionStorage.PONTUACAO_USUARIOS = JSON.stringify(resposta);
 
-    function pularSegundos(idUsuario) {
-        listened = false;
-    }
-
-    function obterPontuacao(idUsuario) {
-
-        fetch(`/quiz/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    sessionStorage.PONTUACAO_USUARIOS = JSON.stringify(resposta);
-
-                    exibirPontuacoesDoUsuario();
-                     plotarGrafico(resposta, idUsuario);
+                        exibirPontuacoesDoUsuario();
+                        plotarGrafico(resposta, idUsuario);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
+        }
 
-    function mudarMusica() {
-        vtTentativas[tentativas] += 1;
-        tentativas = -1;
-        musicaAtual += 1;
-        song.src = vtMusicas[musicaAtual][2];
-        listened = false;
-        var tryBox = document.querySelector('.try-box');
-        setTimeout(function () {
-            var tryPos = tryBox.children;
-            for (var index = 0; index < tryPos.length; index++) {
-                tryPos[index].style.backgroundColor = 'black';
-            }
-            nomeMusica.innerHTML = "";
-            imgMusica.src = "assets/question.png";
-        }, 5000);
+        function mudarMusica() {
+            vtTentativas[tentativas] += 1;
+            tentativas = -1;
+            musicaAtual += 1;
+            song.src = vtMusicas[musicaAtual][2];
+            listened = false;
+            var tryBox = document.querySelector('.try-box');
+            setTimeout(function () {
+                var tryPos = tryBox.children;
+                for (var index = 0; index < tryPos.length; index++) {
+                    tryPos[index].style.backgroundColor = 'black';
+                }
+                nomeMusica.innerHTML = "";
+                imgMusica.src = "assets/question.png";
+            }, 5000);
 
-    }
+        }
 
-    function exibirPontuacoesDoUsuario() {
-        var pontuacoes = JSON.parse(sessionStorage.PONTUACAO_USUARIOS);
-        console.log(pontuacoes);
-        graficos.style.display = "flex";
-        pontuacoes.forEach(item => {
-            graficos.innerHTML += `
-                <div id="grafico${item.idPontuacao}" class="display-none">
-                    <h2 class="tituloGraficos">
-                        <span id="tituloPontuacao${item.idPontuacao}">Pontuação</span>
-                    </h2>
-                    <div class="graph">
-                        <canvas id="myChart${item.idPontuacao}"></canvas>
-                        <div class="kpi-row">
-                        <div class="kpi-column">
-                            <h4>Acertos totais</h4>
-                            <h5>${acertosTotais}</h5>    
-                            <h4>Sequência de acertos</h4>
-                            <h5>${seqAcertosVar}</h5>    
+        function exibirPontuacoesDoUsuario() {
+            var pontuacoes = JSON.parse(sessionStorage.PONTUACAO_USUARIOS);
+            console.log(pontuacoes);
+            graficos.style.display = "flex";
+                graficos.innerHTML += `
+                    <div id="grafico${pontuacoes[pontuacoes.length - 1].idPontuacao}" class="display-none">
+                        <h2 class="tituloGraficos">
+                            <span id="tituloPontuacao${pontuacoes[pontuacoes.length - 1].idPontuacao}">Pontuação</span>
+                        </h2>
+                        <div class="graph">
+                            <canvas id="myChart${pontuacoes[pontuacoes.length - 1].idPontuacao}"></canvas>
+                            <div class="kpi-row">
+                            <div class="kpi-column">
+                                <h4>Acertos totais</h4>
+                                <h5>${acertosTotais}</h5>    
+                                <h4>Sequência de acertos</h4>
+                                <h5>${seqAcertosVar}</h5>    
+                            </div>
+                            <div class="kpi-column">
+                                <h4>Erros Totais</h4>
+                                <h5>${errosTotaisVar}</h5>    
+                                <h4>Álbum mais acertado</h4>
+                                <h5>${albumMaisAcertado}</h5>    
+                            </div>
+                            <div class="kpi-column">
+                                <h4>Não respondido</h4>
+                                <h5>${naoRespondidosVar}</h5>    
+                                <h4>Álbum mais errado</h4>
+                                <h5>${albumMaisErrado}</h5>    
+                            </div>
+                        <div>
                         </div>
-                          <div class="kpi-column">
-                            <h4>Erros Totais</h4>
-                            <h5>${errosTotaisVar}</h5>    
-                            <h4>Álbum mais acertado</h4>
-                            <h5>${albumMaisAcertado}</h5>    
-                        </div>
-                         <div class="kpi-column">
-                            <h4>Não respondido</h4>
-                            <h5>${naoRespondidosVar}</h5>    
-                            <h4>Álbum mais errado</h4>
-                            <h5>${albumMaisErrado}</h5>    
-                        </div>
-                     <div>
                     </div>
-                </div>
-            `
-        });
-    }
+                `
+            };
+        
 
-    function plotarGrafico(resposta, idUsuario) {
+        function plotarGrafico(resposta, idUsuario) {
 
-        console.log('iniciando plotagem do gráfico...');
+            console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
-        let labels = ["Tentativa 1", "Tentativa 2", "Tentativa 3", "Tentativa 4", "Tentativa 5"];
+            // Criando estrutura para plotar gráfico - labels
+            let labels = ["Tentativa 1", "Tentativa 2", "Tentativa 3", "Tentativa 4", "Tentativa 5"];
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Acertos por tentativa',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: '#FF0000',
-                color: "#FFF",
-                tension: 0.1
-            }]
-        };
+            // Criando estrutura para plotar gráfico - dados
+            let dados = {
+                labels: labels,
+                datasets: [{
+                    label: 'Acertos por tentativa',
+                    data: [],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    backgroundColor: '#FF0000',
+                    color: "#FFF",
+                    tension: 0.1
+                }]
+            };
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+            console.log('----------------------------------------------')
+            console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+            console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-         for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            dados.datasets[0].data.push(registro.acertosTntv1);
-            dados.datasets[0].data.push(registro.acertosTntv2);
-            dados.datasets[0].data.push(registro.acertosTntv3);
-            dados.datasets[0].data.push(registro.acertosTntv4);
-            dados.datasets[0].data.push(registro.acertosTntv5);
-         }
+            // Inserindo valores recebidos em estrutura para plotar o gráfico
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                dados.datasets[0].data.push(registro.acertosTntv1);
+                dados.datasets[0].data.push(registro.acertosTntv2);
+                dados.datasets[0].data.push(registro.acertosTntv3);
+                dados.datasets[0].data.push(registro.acertosTntv4);
+                dados.datasets[0].data.push(registro.acertosTntv5);
+            }
 
-         acertosTotais = registro.acertosTntv1 + registro.acertosTntv2 + registro.acertosTntv3 + registro.acertosTntv4 + 
-         registro.acertosTntv
-         errosTotaisVar = registro.errosTotais
-         albumMaisAcertado = registro.albumMaisAcertado
-         naoRespondidosVar = registro.naoRespondido
-         albumMaisErrado = registro.albumMaisErrado
+            acertosTotais = registro.acertosTntv1 + registro.acertosTntv2 + registro.acertosTntv3 + registro.acertosTntv4 + 
+            registro.acertosTntv
+            errosTotaisVar = registro.errosTotais
+            albumMaisAcertado = registro.albumMaisAcertado
+            naoRespondidosVar = registro.naoRespondido
+            albumMaisErrado = registro.albumMaisErrado
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+            console.log('----------------------------------------------')
+            console.log('O gráfico será plotado com os respectivos valores:')
+            console.log('Labels:')
+            console.log(labels)
+            console.log('Dados:')
+            console.log(dados.datasets)
+            console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'bar',
-            data: dados,
-        };
+            // Criando estrutura para plotar gráfico - config
+            const config = {
+                type: 'bar',
+                data: dados,
+            };
 
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChart${registro.idPontuacao}`),
-            config
-        );
-    }
-</script>
+            // Adicionando gráfico criado em div na tela
+            let myChart = new Chart(
+                document.getElementById(`myChart${registro.idPontuacao}`),
+                config
+            );
+        }
+    </script>
 
-</html>
+    </html>

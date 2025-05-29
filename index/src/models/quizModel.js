@@ -42,7 +42,7 @@ function obterPontuacao(idUsuario){
     on fkUsuario = fkPontuacaoUsuario and 
     fkPontuacao = idPontuacao
     WHERE fkUsuario = ${idUsuario}
-    order by idPontuacao desc limit 1;`;
+    order by idPontuacao desc;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
