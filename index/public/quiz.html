@@ -93,7 +93,7 @@
     var qntdAcertosAlbum = 0;
     var qntdErrosAlbum = 0;
     var idUsuario = sessionStorage.getItem("ID_USUARIO")
-    console.log(idUsuario)
+    var acertosTotais = 0;
 
     song.onloadedmetadata = function () {
         progress.max = song.duration
@@ -327,10 +327,24 @@
             graficos.innerHTML += `
                 <div id="grafico${item.idPontuacao}" class="display-none">
                     <h2 class="tituloGraficos">
-                        <span id="tituloPontuacao${item.idPontuacao}">Pontuação ${item.idPontuacao}</span>
+                        <span id="tituloPontuacao${item.idPontuacao}">Pontuação</span>
                     </h2>
                     <div class="graph">
                         <canvas id="myChart${item.idPontuacao}"></canvas>
+                        <div class="kpi-row">
+                        <div class="kpi-column">
+                            <h4>Acertos totais</h4>
+                            <h5>${acertosTotais}</h5>    
+                            <h4>Sequência de acertos</h4>
+                            <h5>${seqAcertosVar}</h5>    
+                        </div>
+                          <div class="kpi-column">
+                            <h4>Acertos totais</h4>
+                            <h5>${acertosTotais}</h5>    
+                            <h4>Sequência de acertos</h4>
+                            <h5>${seqAcertosVar}</h5>    
+                        </div>
+                     <div>
                     </div>
                 </div>
             `
@@ -369,6 +383,9 @@
             dados.datasets[0].data.push(registro.acertosTntv4);
             dados.datasets[0].data.push(registro.acertosTntv5);
          }
+
+         acertosTotais = registro.acertosTntv1 + registro.acertosTntv2 + registro.acertosTntv3 + registro.acertosTntv4 + 
+         registro.acertosTntv
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
