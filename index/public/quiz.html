@@ -339,10 +339,16 @@
                             <h5>${seqAcertosVar}</h5>    
                         </div>
                           <div class="kpi-column">
-                            <h4>Acertos totais</h4>
-                            <h5>${acertosTotais}</h5>    
-                            <h4>Sequência de acertos</h4>
-                            <h5>${seqAcertosVar}</h5>    
+                            <h4>Erros Totais</h4>
+                            <h5>${errosTotaisVar}</h5>    
+                            <h4>Álbum mais acertado</h4>
+                            <h5>${albumMaisAcertado}</h5>    
+                        </div>
+                         <div class="kpi-column">
+                            <h4>Não respondido</h4>
+                            <h5>${naoRespondidosVar}</h5>    
+                            <h4>Álbum mais errado</h4>
+                            <h5>${albumMaisErrado}</h5>    
                         </div>
                      <div>
                     </div>
@@ -366,6 +372,8 @@
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: '#FF0000',
+                color: "#FFF",
                 tension: 0.1
             }]
         };
@@ -386,6 +394,10 @@
 
          acertosTotais = registro.acertosTntv1 + registro.acertosTntv2 + registro.acertosTntv3 + registro.acertosTntv4 + 
          registro.acertosTntv
+         errosTotaisVar = registro.errosTotais
+         albumMaisAcertado = registro.albumMaisAcertado
+         naoRespondidosVar = registro.naoRespondido
+         albumMaisErrado = registro.albumMaisErrado
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
