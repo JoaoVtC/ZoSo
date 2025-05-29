@@ -14,7 +14,7 @@
         <div class="header" id="header">
             <a href="index.html"><img src="assets/logo.png" alt="" width="250px" height="110px"></a>
             <h2 class="button-header"><a href="index.html">Página inicial</a></h2>
-            <h2 class="button-header"><a href="">Estatísticas</a></h2>
+            <h2 class="button-header"><a href="javascript:obterPontuacao(idUsuario)">Estatísticas</a></h2>
             <h2 class="button-header"><a href="cadastro.html">Cadastro</a></h2>
             <h2><a class="button-header" href="login.html">Login</a></h2>
         </div>
@@ -42,8 +42,6 @@
                 <div id="nomeMusica" style="margin-left: 40px;"></div>
                 <input type="text" placeholder="digíte aqui..." id="iptResposta">
                 <div class="buttons-box">
-                    <button onclick="pularSegundos()"
-                        style="background-color: black; border: 2px white solid;">Pular</button>
                     <button onclick="advinhar()"
                         style="background-color: black; border: 2px white solid;">Confirmar</button>
                     <button onclick="finalizar()" style="background-color: red; border: inherit;">Finalizar
@@ -52,7 +50,6 @@
 
                 </div>
             </div>
-
             <div class="howTo-container">
             </div>
         </div>
@@ -73,7 +70,17 @@
 
         var vtMusicas = [["How Many More Times", "assets/led_I.jpg", "assets/audios/HowManyMoreTimes10s.mp3", "Led Zeppelin I"],
         ["I Can't Quit You Baby", "assets/led_I.jpg", "assets/audios/ICantQuitYouBaby10s.mp3", "Led Zeppelin I"],
-        ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppelin II"]];
+        ["Heartbreaker", "assets/led_2.jpg", "assets/audios/Heartbreaker10s.mp3", "Led Zeppelin II"],
+        ["Thank You", "assets/led_2.jpg", "assets/audios/thankYou10s.mp3", "Led Zeppelin II"],
+        ["Since I've Been Loving You", "assets/led_3.jpg", "assets/audios/SinceIveBeenLovingYou10s.mp3", "Led Zeppelin III"],
+        ["Friends", "assets/led_3.jpg", "assets/audios/Friends10S.mp3", "Led Zeppelin III"],
+        ["Stairway To Heaven", "assets/led_iv.jpg", "assets/audios/StairwayToHeaven10s.mp3", "Led Zeppelin IV"],
+        ["The Battle Of Evermore", "assets/led_iv.jpg", "assets/audios/TheBattleOfEvermore10S.mp3", "Led Zeppelin IV"],
+        ["The Crunge", "assets/led_3.jpg", "assets/audios/TheCrunge10S.mp3", "Houses of the Holy"],
+        ["Houses Of The Holy", "assets/led_3.jpg", "assets/audios/HousesOfTheHoly10S.mp3", "Houses of the Holy"],
+        ["Down By The Seaside", "assets/led_3.jpg", "assets/audios/SinceIveBeenLovingYou.mp3", "Led Zeppelin III"],
+        ["Down By The Seaside", "assets/led_3.jpg", "assets/audios/SinceIveBeenLovingYou.mp3", "Led Zeppelin III"],
+        ];
         var resposta = false;
         var listened = false
         var tentativas = -1;
@@ -308,14 +315,19 @@
             }, 5000);
 
         }
-
+        function fechar(){
+            graficos.style.display = "none";
+            graficos.innerHTML = ""
+        }
         function exibirPontuacoesDoUsuario() {
             var pontuacoes = JSON.parse(sessionStorage.PONTUACAO_USUARIOS);
             console.log("Pontuações:" + pontuacoes);
             graficos.style.display = "flex";
                 graficos.innerHTML += `
                     <div id="grafico${pontuacoes[pontuacoes.length - 1].idPontuacao}" class="display-none">
+                        <img src="assets/xmark-solid.svg" alt="" width="25px" height="25px" onclick="fechar()">
                         <h2 class="tituloGraficos">
+                              
                             <span id="tituloPontuacao${pontuacoes[pontuacoes.length - 1].idPontuacao}">Pontuação</span>
                         </h2>
                         <div class="graph">

@@ -52,7 +52,7 @@ a:hover{
     width: 220vh;
     height: 60vh;
     margin-bottom: 20px;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -199,16 +199,16 @@ audio{
     justify-content: space-evenly;
     background-color: #222222;
     width: 90vh;
-    height: 70vh;
+    height: 78vh;
     border-radius: 20px;
     box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.3);
     margin-left: 30vw;
-    margin-top: 20vh;
+    margin-top: 10vh;
     padding: 10px;
 }
 
 .graph{
-  width: 75vh;
+  width: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -231,4 +231,10 @@ audio{
   display: flex;
   gap: 10px;
   flex-direction: column;
+}
+
+.display-none img{
+  display: flex;
+  align-self: flex-end;
+  justify-self: flex-end; 
 }
