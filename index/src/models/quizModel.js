@@ -1,4 +1,5 @@
 var database = require("../database/config")
+var idPontuacao;
 
 function autenticar(email, pwd) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, pwd)
@@ -23,7 +24,7 @@ function pontuacao(idUsuario, tntv1, tntv2, tntv3, tntv4, tntv5,
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql)
     .then(resPontuacaoTotal => {
-        var idPontuacao = resPontuacaoTotal.insertId
+        idPontuacao = resPontuacaoTotal.insertId
            var instrucaoSql2 = `  INSERT INTO pontuacaoAlbum (fkPontuacao, fkPontuacaoUsuario, albumMaisAcertado, albumMaisErrado, acertosAlbumMaisAcertado, errosAlbumMaisErrado)
          VALUES (${idPontuacao}, ${idUsuario}, '${albumMaisAcertado}', '${albumMaisErrado}', ${qntdAcertos}, ${qntdErros});
  `  
@@ -40,7 +41,8 @@ function obterPontuacao(idUsuario){
     join pontuacaoAlbum
     on fkUsuario = fkPontuacaoUsuario and 
     fkPontuacao = idPontuacao
-    WHERE fkUsuario = ${idUsuario}`;
+    WHERE fkUsuario = ${idUsuario}
+    order by idPontuacao desc limit 1;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

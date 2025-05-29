@@ -134,7 +134,7 @@
     function advinhar() {
         tentativas += 1;
         var childTry = document.querySelector(`.try-box span:nth-child(${tentativas + 1})`);
-        if (tentativas == 4) {
+        if (tentativas == 5) {
             alert("Você esgotou as suas tentativas... Mudando para a próxima música")
 
             if (vtMusicas[musicaAtual][3] == "Led Zeppelin I") {
@@ -181,7 +181,7 @@
             seqBool = false
 
         }
-        if (iptResposta.value == vtMusicas[musicaAtual][0]) {
+        else if (iptResposta.value == vtMusicas[musicaAtual][0]) {
             alert("Resposta correta")
             nomeMusica.innerHTML = vtMusicas[musicaAtual][0];
             imgMusica.src = vtMusicas[musicaAtual][1];
