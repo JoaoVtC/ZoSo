@@ -35,4 +35,8 @@ constraint constUserPont foreign key (fkPontuacaoUsuario) references pontuacaoTo
 
 
 
-
+insert into usuario (nickname,email, senha) values ("Jhaoder", "jhaoder@gmail.com", "1234aB!");
+insert into pontuacaoTotal (fkUsuario, acertosTntv1, acertosTntv2, acertosTntv3, acertosTntv4, acertosTntv5, errosTotais, seqAcertos,
+naoRespondido) values (1, 1, 3, 2, 5, 2, 4, 1);
+insert into pontuacaoAlbum (fkPontuacao, fkPontuacaoUsuario, albumMaisAcertado, albumMaisErrado) values
+(1, 1, "Led Zeppellin II", "Presence");
